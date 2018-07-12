@@ -9,6 +9,8 @@ namespace ContactLibrary
 {
     public class ContactDAL
     {
+        public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        //logger.Info(e.Message);
         public static List<Person> contacts = new List<Person>();
 
         public static bool Add(string firstName = null,
@@ -50,11 +52,12 @@ namespace ContactLibrary
                 person.address = addr;
                 person.phone = phone;
                 // Add new person to contact list
-                contacts.Add(Pid, person);
+                contacts.Add(person);
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                logger.Info(e.Message);
                 return false;
             }
         }

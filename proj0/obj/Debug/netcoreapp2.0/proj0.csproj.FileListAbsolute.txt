@@ -1,0 +1,8 @@
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\proj0.deps.json
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\proj0.runtimeconfig.json
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\proj0.runtimeconfig.dev.json
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\proj0.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.csprojAssemblyReference.cache
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.csproj.CoreCompileInputs.cache
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.AssemblyInfoInputs.cache
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.AssemblyInfo.cs
