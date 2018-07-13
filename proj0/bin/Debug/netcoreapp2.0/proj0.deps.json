@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "c449fc136fb80b686d42db58e92c024fc897bc36"
+    "signature": "a6b6fba7a7a2389cd6e95e49a4222ae1996d6881"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,6 +9,7 @@
       "proj0/1.0.0": {
         "dependencies": {
           "NLog": "4.5.6",
+          "NLog.Config": "4.5.6",
           "xunit": "2.3.1"
         },
         "runtime": {
@@ -17,9 +18,19 @@
       },
       "NLog/4.5.6": {
         "runtime": {
-          "lib/netstandard2.0/NLog.dll": {}
+          "lib/netstandard2.0/NLog.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.5.6.7874"
+          }
         }
       },
+      "NLog.Config/4.5.6": {
+        "dependencies": {
+          "NLog": "4.5.6",
+          "NLog.Schema": "4.5.6"
+        }
+      },
+      "NLog.Schema/4.5.6": {},
       "xunit/2.3.1": {
         "dependencies": {
           "xunit.analyzers": "0.7.0",
@@ -29,13 +40,19 @@
       },
       "xunit.abstractions/2.0.1": {
         "runtime": {
-          "lib/netstandard1.0/xunit.abstractions.dll": {}
+          "lib/netstandard1.0/xunit.abstractions.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
         }
       },
       "xunit.analyzers/0.7.0": {},
       "xunit.assert/2.3.1": {
         "runtime": {
-          "lib/netstandard1.1/xunit.assert.dll": {}
+          "lib/netstandard1.1/xunit.assert.dll": {
+            "assemblyVersion": "2.3.1.3858",
+            "fileVersion": "2.3.1.3858"
+          }
         }
       },
       "xunit.core/2.3.1": {
@@ -49,7 +66,10 @@
           "xunit.abstractions": "2.0.1"
         },
         "runtime": {
-          "lib/netstandard1.1/xunit.core.dll": {}
+          "lib/netstandard1.1/xunit.core.dll": {
+            "assemblyVersion": "2.3.1.3858",
+            "fileVersion": "2.3.1.3858"
+          }
         }
       },
       "xunit.extensibility.execution/2.3.1": {
@@ -57,7 +77,10 @@
           "xunit.extensibility.core": "2.3.1"
         },
         "runtime": {
-          "lib/netstandard1.1/xunit.execution.dotnet.dll": {}
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "assemblyVersion": "2.3.1.3858",
+            "fileVersion": "2.3.1.3858"
+          }
         }
       }
     }
@@ -74,6 +97,20 @@
       "sha512": "sha512-FZIdeH92NTu6ePm+QbLT9pyd5vY9B+GYX8S2bh6ZxJC+XSTZDhZ6EHWxDzyBIEjtIb+nSBJfIgdMuQNQEYMqbQ==",
       "path": "nlog/4.5.6",
       "hashPath": "nlog.4.5.6.nupkg.sha512"
+    },
+    "NLog.Config/4.5.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bfGBl23xtDmUcRc+HSyjmqgQJViEydjUvUzgWDqI08boShAPvufEyf/DDUhz987nD0n1olv2vCxsnHSdL3XpSA==",
+      "path": "nlog.config/4.5.6",
+      "hashPath": "nlog.config.4.5.6.nupkg.sha512"
+    },
+    "NLog.Schema/4.5.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sv/vdbTMzIQbzqGBCF8wwanszdAtfiBaZwujpdcZomGyy8qkbQ4aG6dGFbpAx9B7to9w2RLpMpX1TMAXHLaORw==",
+      "path": "nlog.schema/4.5.6",
+      "hashPath": "nlog.schema.4.5.6.nupkg.sha512"
     },
     "xunit/2.3.1": {
       "type": "package",

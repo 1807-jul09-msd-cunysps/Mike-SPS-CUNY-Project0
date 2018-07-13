@@ -9,7 +9,7 @@ namespace ContactLibrary
     class ContactDataIO
     {
         public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();     //logger.Info(e.Message);
-        private static string contactFile = "contacts.bin";
+        private const string contactFile = "contacts.bin";
 
         // Read contacts file and return as List<Person>
         public static List<Person> GetContacts()
@@ -84,12 +84,12 @@ namespace ContactLibrary
         }
 
         // File Write
-        public static bool WriteContactListToFile(string contactsSerialized)
+        public static bool WriteContactListToFile(string contactsSerialized, string fileName = contactFile)
         {
             try
             {
                 // Overwrite file with updated contact list
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@contactFile))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@fileName))
                 {
                     file.Write(contactsSerialized);
                 }
@@ -103,12 +103,12 @@ namespace ContactLibrary
         }
 
         // File Read
-        public static string ReadContactListFromFile()
+        public static string ReadContactListFromFile(string fileName = contactFile)
         {
             try
             {
                 // Get serialized contact list from file
-                string contactsSerialized = System.IO.File.ReadAllText(@contactFile);
+                string contactsSerialized = System.IO.File.ReadAllText(@fileName);
 
                 return contactsSerialized;
             }

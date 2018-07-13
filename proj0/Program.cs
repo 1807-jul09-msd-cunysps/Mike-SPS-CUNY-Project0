@@ -6,7 +6,8 @@ namespace proj0
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+            logger.Info("FJNASKJNFAKSLJNBGFKL\nSANBGLKJ\nNBALSKNBGLKJANGLNGLSAN");
         }
     }
 }

@@ -31,6 +31,11 @@ namespace ContactLibrary
         public Country Country { get; set; }
         [DataMember]
         public string Zipcode { get; set; }
+
+        public string Print()
+        {
+            return $"{HouseNum} {Street}\n{City}, {State} {Zipcode}";
+        }
     }
 
     [DataContract]
@@ -45,18 +50,17 @@ namespace ContactLibrary
         [DataMember]
         public string Number { get; set; }
         [DataMember]
-        public string Exp { get; set; }
+        public string Ext { get; set; }
+
+        public string Print()
+        {
+            return $"{AreaCode} {Number}: {Ext}";
+        }
     }
 
     [DataContract]
     public class Person
     {
-        public Person()
-        {
-            Address = new Address();
-            Phone = new Phone();
-        }
-
         [DataMember]
         public long Pid { get; set; }
         [DataMember]
@@ -67,5 +71,16 @@ namespace ContactLibrary
         public Address Address { get; set; }
         [DataMember]
         public Phone Phone { get; set; }
+
+        public Person()
+        {
+            Address = new Address();
+            Phone = new Phone();
+        }
+
+        public string Print()
+        {
+            return $"\n{Firstname} {Lastname}\n{Address.Print()}\n{Phone.Print()}";
+        }
     }
 }

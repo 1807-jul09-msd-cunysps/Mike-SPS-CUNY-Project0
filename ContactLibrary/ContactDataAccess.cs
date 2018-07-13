@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ContactLibrary
 {
-    public class ContactDataAccess
+    public static class ContactDataAccess
     {
         public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();     //logger.Info(e.Message);
 
@@ -32,7 +32,7 @@ namespace ContactLibrary
                 phone.CountryCode = country;
                 phone.AreaCode = areaCode;
                 phone.Number = number;
-                phone.Exp = ext;
+                phone.Ext = ext;
                 // Create Address
                 Address addr = new Address();
                 addr.Pid = Pid;
@@ -41,6 +41,7 @@ namespace ContactLibrary
                 addr.City = city;
                 addr.State = state;
                 addr.Country = country;
+                addr.Zipcode = zipcode;
                 // Create Person
                 Person person = new Person();
                 person.Pid = Pid;
@@ -88,17 +89,18 @@ namespace ContactLibrary
                 Person person = query[0];
                 // Edit Phone
                 Phone phone = person.Phone;
-                if (country != null) phone.CountryCode = country;
-                if (areaCode != null) phone.AreaCode = areaCode;
-                if (number != null) phone.Number = number;
-                if (ext != null) phone.Exp = ext;
+                phone.CountryCode = (country != Country.NULL) ? country : Country.NULL;
+                phone.AreaCode = (areaCode != null) ? areaCode : null;
+                phone.Number = (number != null) ? number : null;
+                phone.Ext = (ext != null) ? ext : null;
                 // Edit Address
                 Address addr = person.Address;
-                if (houseNum != null) addr.HouseNum = houseNum;
-                if (street != null) addr.Street = street;
-                if (city != null) addr.City = city;
-                if (state != null) addr.State = state;
-                if (country != null) addr.Country = country;
+                addr.HouseNum = (houseNum != null) ? houseNum : null;
+                addr.Street = (street != null) ? street : null;
+                addr.City = (city != null) ? city : null;
+                addr.State = (state != State.NULL) ? state : State.NULL;
+                addr.Country = (country != Country.NULL) ? country : Country.NULL;
+                addr.Zipcode = (zipcode != null) ? zipcode : null;
 
                 return true;
             }
@@ -110,7 +112,7 @@ namespace ContactLibrary
         }
 
         public static bool Delete(string firstName = null,
-                                    string lastName = null)
+                                  string lastName = null)
         {
             try
             {
@@ -138,6 +140,23 @@ namespace ContactLibrary
             }
         }
 
+        public static List<Person> Search(string query)
+        {
+            // List to return query results
+            List<Person> results = new List<Person>();
+            // Search firstname, lastname, zipcode, city, and phone number for query            
+            results = ( from p in contacts
+                        where p.Firstname.Contains(query) ||
+                              p.Lastname.Contains(query) ||
+                              p.Address.City.Contains(query) ||
+                              p.Address.Zipcode.Contains(query) ||
+                              p.Phone.Number.Contains(query)
+                        select p).ToList();
+            // Return query results
+            return results;
+        }
+
+        /*
         public static List<Person> Search(string firstName = null,
                                           string lastName = null,
                                           string zipcode = null,
@@ -184,5 +203,6 @@ namespace ContactLibrary
             // Return query results
             return results;
         }
+        */
     }
 }
