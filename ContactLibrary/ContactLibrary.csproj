@@ -63,8 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContactDAL.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="ContactDataAccess.cs" />
+    <Compile Include="ContactDataIO.cs" />
+    <Compile Include="Models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

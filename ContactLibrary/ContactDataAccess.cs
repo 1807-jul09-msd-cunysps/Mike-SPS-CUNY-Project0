@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ContactLibrary;
 
 namespace ContactLibrary
 {
-    public class ContactDAL
+    public class ContactDataAccess
     {
-        public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        //logger.Info(e.Message);
+        public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();     //logger.Info(e.Message);
+
         public static List<Person> contacts = new List<Person>();
 
         public static bool Add(string firstName = null,
@@ -32,25 +29,25 @@ namespace ContactLibrary
                 // Create Phone
                 Phone phone = new Phone();
                 phone.Pid = Pid;
-                phone.countrycode = country;
-                phone.areaCode = areaCode;
-                phone.number = number;
-                phone.ext = ext;
+                phone.CountryCode = country;
+                phone.AreaCode = areaCode;
+                phone.Number = number;
+                phone.Exp = ext;
                 // Create Address
                 Address addr = new Address();
                 addr.Pid = Pid;
-                addr.houseNum = houseNum;
-                addr.street = street;
-                addr.city = city;
+                addr.HouseNum = houseNum;
+                addr.Street = street;
+                addr.City = city;
                 addr.State = state;
                 addr.Country = country;
                 // Create Person
                 Person person = new Person();
                 person.Pid = Pid;
-                person.firstName = firstName;
-                person.lastName = lastName;
-                person.address = addr;
-                person.phone = phone;
+                person.Firstname = firstName;
+                person.Lastname = lastName;
+                person.Address = addr;
+                person.Phone = phone;
                 // Add new person to contact list
                 contacts.Add(person);
                 return true;
@@ -78,8 +75,8 @@ namespace ContactLibrary
             {
                 // Find the user by first name last name
                 var query = (from p in contacts
-                             where p.firstName == firstName
-                             && p.lastName == lastName
+                             where p.Firstname == firstName
+                             && p.Lastname == lastName
                              select p).ToList();
                 // Throw error if more than one result
                 if (query.Count > 1)
@@ -90,23 +87,24 @@ namespace ContactLibrary
                 // Get Person
                 Person person = query[0];
                 // Edit Phone
-                Phone phone = person.phone;
-                if (country != null) phone.countrycode = country;
-                if (areaCode != null) phone.areaCode = areaCode;
-                if (number != null) phone.number = number;
-                if (ext != null) phone.ext = ext;
+                Phone phone = person.Phone;
+                if (country != null) phone.CountryCode = country;
+                if (areaCode != null) phone.AreaCode = areaCode;
+                if (number != null) phone.Number = number;
+                if (ext != null) phone.Exp = ext;
                 // Edit Address
-                Address addr = person.address;
-                if (houseNum != null) addr.houseNum = houseNum;
-                if (street != null) addr.street = street;
-                if (city != null) addr.city = city;
+                Address addr = person.Address;
+                if (houseNum != null) addr.HouseNum = houseNum;
+                if (street != null) addr.Street = street;
+                if (city != null) addr.City = city;
                 if (state != null) addr.State = state;
                 if (country != null) addr.Country = country;
 
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                logger.Info(e.Message);
                 return false;
             }
         }
@@ -118,8 +116,8 @@ namespace ContactLibrary
             {
                 // Find the user by first name last name
                 var query = (from p in contacts
-                             where p.firstName == firstName
-                             && p.lastName == lastName
+                             where p.Firstname == firstName
+                             && p.Lastname == lastName
                              select p).ToList();
                 // Throw error if more than one result
                 if (query.Count > 1)
@@ -133,8 +131,9 @@ namespace ContactLibrary
                 contacts.Remove(person);
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                logger.Info(e.Message);
                 return false;
             }
         }
@@ -151,35 +150,35 @@ namespace ContactLibrary
             if (firstName != null)
             {
                 results = (from p in contacts
-                           where p.firstName == firstName
+                           where p.Firstname == firstName
                            select p).ToList();
             }
             // Search by last name
             else if (lastName != null)
             {
                 results = (from p in contacts
-                           where p.lastName == lastName
+                           where p.Lastname == lastName
                            select p).ToList();
             }
             // Search by zip code
-            else if (zipCode != null)
+            else if (zipcode != null)
             {
                 results = (from p in contacts
-                           where p.address.zipcode == zipcode
+                           where p.Address.Zipcode == zipcode
                            select p).ToList();
             }
-            // Search by city
+            // Search by City
             else if (city != null)
             {
                 results = (from p in contacts
-                           where p.address.city == city
+                           where p.Address.City == city
                            select p).ToList();
             }
-            // Search by phone number
+            // Search by Phone Number
             else if (phoneNumber != null)
             {
                 results = (from p in contacts
-                           where p.phone.number == phoneNumber
+                           where p.Phone.Number == phoneNumber
                            select p).ToList();
             }
             // Return query results
