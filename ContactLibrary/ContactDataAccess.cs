@@ -89,18 +89,17 @@ namespace ContactLibrary
                 Person person = query[0];
                 // Edit Phone
                 Phone phone = person.Phone;
-                phone.CountryCode = (country != Country.NULL) ? country : Country.NULL;
-                phone.AreaCode = (areaCode != null) ? areaCode : null;
-                phone.Number = (number != null) ? number : null;
-                phone.Ext = (ext != null) ? ext : null;
+                if (country != Country.NULL) phone.CountryCode = country;
+                if (areaCode != null) phone.AreaCode = areaCode;
+                if (number != null) phone.Number = number;
+                if (ext != null) phone.Ext = ext;
                 // Edit Address
                 Address addr = person.Address;
-                addr.HouseNum = (houseNum != null) ? houseNum : null;
-                addr.Street = (street != null) ? street : null;
-                addr.City = (city != null) ? city : null;
-                addr.State = (state != State.NULL) ? state : State.NULL;
-                addr.Country = (country != Country.NULL) ? country : Country.NULL;
-                addr.Zipcode = (zipcode != null) ? zipcode : null;
+                if (houseNum != null) addr.HouseNum = houseNum;
+                if (street != null) addr.Street = street;
+                if (city != null) addr.City = city;
+                if (state != State.NULL) addr.State = state;
+                if (country != Country.NULL) addr.Country = country;
 
                 return true;
             }
