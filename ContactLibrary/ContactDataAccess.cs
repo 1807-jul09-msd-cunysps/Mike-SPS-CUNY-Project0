@@ -51,6 +51,7 @@ namespace ContactLibrary
                 person.Phone = phone;
                 // Add new person to contact list
                 contacts.Add(person);
+                logger.Info($"Created Person: \n{person.Print()}");
                 return true;
             }
             catch(Exception e)

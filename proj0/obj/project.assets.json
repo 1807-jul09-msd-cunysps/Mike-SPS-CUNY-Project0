@@ -306,6 +306,15 @@
         "runtime": {
           "lib/netstandard1.1/xunit.execution.dotnet.dll": {}
         }
+      },
+      "ContactLibrary/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ContactLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ContactLibrary.dll": {}
+        }
       }
     }
   },
@@ -906,10 +915,16 @@
         "xunit.extensibility.execution.2.3.1.nupkg.sha512",
         "xunit.extensibility.execution.nuspec"
       ]
+    },
+    "ContactLibrary/1.0.0": {
+      "type": "project",
+      "path": "../ContactLibrary/ContactLibrary.csproj",
+      "msbuildProject": "../ContactLibrary/ContactLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "ContactLibrary >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "NLog >= 4.5.6",
       "NLog.Config >= 4.5.6",
@@ -918,29 +933,23 @@
   },
   "packageFolders": {
     "C:\\Users\\Mike\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\proj0.csproj",
+      "projectUniqueName": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\proj0.csproj",
       "projectName": "proj0",
-      "projectPath": "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\proj0.csproj",
+      "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\proj0.csproj",
       "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\obj\\",
+      "outputPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -951,7 +960,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\ContactLibrary\\ContactLibrary.csproj": {
+              "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\ContactLibrary\\ContactLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -965,20 +978,20 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "2.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
-          },
-          "xunit": {
-            "target": "Package",
-            "version": "2.3.1"
-          },
-          "NLog.Config": {
-            "target": "Package",
-            "version": "4.5.6"
           },
           "NLog": {
             "target": "Package",
-            "version": "4.5.6"
+            "version": "[4.5.6, )"
+          },
+          "NLog.Config": {
+            "target": "Package",
+            "version": "[4.5.6, )"
+          },
+          "xunit": {
+            "target": "Package",
+            "version": "[2.3.1, )"
           }
         },
         "imports": [

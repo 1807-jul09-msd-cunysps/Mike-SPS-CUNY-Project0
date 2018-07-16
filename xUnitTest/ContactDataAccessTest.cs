@@ -12,7 +12,8 @@ namespace xUnitTest
     public class ContactDataAccessTest
     {
         private readonly ITestOutputHelper output;
-        public static List<Person> TestContacts = new List<Person>();
+        public static string testFileName = "test-contacts.dat";
+        public static List<Person> testContacts = new List<Person>();
 
         public ContactDataAccessTest(ITestOutputHelper output)
         {
@@ -109,6 +110,53 @@ namespace xUnitTest
                 output.WriteLine(p.Print());
             }
             Assert.Single(results);
+        }
+
+        [Fact]
+        public void TestSerializationJSON()
+        {
+            string json = ContactDataIO.PersonListToJSON(ContactDataAccess.contacts);
+            testContacts = ContactDataIO.JSONToPersonList(json);
+
+            // Compare List<Person>s
+            string listAsStringPreConversions = "", listAsStringPostConversions = "";
+            for (int i = 0; i < testContacts.Count; i++)
+            {
+                listAsStringPreConversions += ContactDataAccess.contacts[i].Print();
+                listAsStringPostConversions += testContacts[i].Print();
+            }
+
+            Assert.True(listAsStringPreConversions == listAsStringPostConversions);
+        }
+
+        [Fact]
+        public void TestFileIO()
+        {
+            bool writeTest = ContactDataIO.WriteContacts(ContactDataAccess.contacts, testFileName);
+            testContacts = ContactDataIO.GetContacts(testFileName);
+
+            output.WriteLine($"ContactDataAccess.contacts:");
+            foreach (Person p in ContactDataAccess.contacts)
+            {
+                output.WriteLine(p.Print());
+            }
+
+            output.WriteLine($"\ntestContacts:");
+            foreach (Person p in testContacts)
+            {
+                output.WriteLine(p.Print());
+            }
+            
+
+            // Compare List<Person>s
+            string listAsStringPreConversions = "", listAsStringPostConversions = "";
+            for (int i = 0; i < testContacts.Count; i++)
+            {
+                listAsStringPreConversions += ContactDataAccess.contacts[i].Print();
+                listAsStringPostConversions += testContacts[i].Print();
+            }
+
+            Assert.True(listAsStringPreConversions == listAsStringPostConversions);
         }
     }
 }

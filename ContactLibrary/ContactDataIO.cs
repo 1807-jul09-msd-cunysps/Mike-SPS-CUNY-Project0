@@ -6,19 +6,18 @@ using System.Text;
 
 namespace ContactLibrary
 {
-    class ContactDataIO
+    public class ContactDataIO
     {
         public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();     //logger.Info(e.Message);
-        private const string contactFile = "contacts.bin";
+        private const string contactFile = "contacts.dat";
 
         // Read contacts file and return as List<Person>
-        public static List<Person> GetContacts()
+        public static List<Person> GetContacts(string fileName = contactFile)
         {
             try
             {
-                List<Person> p = new List<Person>();
-                string contactsSerialized = ReadContactListFromFile();
-                p = JSONToPersonList(contactsSerialized);
+                string contactsSerialized = ReadContactListFromFile(fileName);
+                List<Person> p = new List<Person>(JSONToPersonList(contactsSerialized));
                 return p;
             }
             catch (Exception e)
@@ -29,14 +28,14 @@ namespace ContactLibrary
         }
 
         // Write contacts to file
-        public static bool WriteContacts(List<Person> p)
+        public static bool WriteContacts(List<Person> p, string fileName = contactFile)
         {
             try
             {
                 string contactsSerialized = PersonListToJSON(p);
                 if (contactsSerialized == null)
                     throw new Exception($"ContactDataIO.cs\nWriteContactsToFile (line 39).\nPersonListToJSON(line 53) returned null.");
-                return WriteContactListToFile(contactsSerialized);
+                return WriteContactListToFile(contactsSerialized, fileName);
             }
             catch (Exception e)
             {
@@ -51,7 +50,7 @@ namespace ContactLibrary
             try
             {
                 MemoryStream stream = new MemoryStream();
-                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Person));
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<Person>));
                 ser.WriteObject(stream, contactsAsObjects);
                 byte[] json = stream.ToArray();
                 stream.Close();
@@ -71,7 +70,7 @@ namespace ContactLibrary
             {
                 List<Person> p = new List<Person>();
                 MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(contactsSerialized));
-                DataContractJsonSerializer ser = new DataContractJsonSerializer(p.GetType());
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<Person>));
                 p = ser.ReadObject(ms) as List<Person>;
                 ms.Close();
                 return p;
@@ -89,7 +88,7 @@ namespace ContactLibrary
             try
             {
                 // Overwrite file with updated contact list
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@fileName))
+                using (StreamWriter file = new StreamWriter(@fileName))
                 {
                     file.Write(contactsSerialized);
                 }
@@ -108,8 +107,7 @@ namespace ContactLibrary
             try
             {
                 // Get serialized contact list from file
-                string contactsSerialized = System.IO.File.ReadAllText(@fileName);
-
+                string contactsSerialized = File.ReadAllText(@fileName);
                 return contactsSerialized;
             }
             catch (Exception e)

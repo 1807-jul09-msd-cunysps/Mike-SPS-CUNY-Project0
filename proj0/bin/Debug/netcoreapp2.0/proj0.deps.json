@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v2.0": {
       "proj0/1.0.0": {
         "dependencies": {
+          "ContactLibrary": "1.0.0",
           "NLog": "4.5.6",
           "NLog.Config": "4.5.6",
           "xunit": "2.3.1"
@@ -18,10 +19,7 @@
       },
       "NLog/4.5.6": {
         "runtime": {
-          "lib/netstandard2.0/NLog.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.5.6.7874"
-          }
+          "lib/netstandard2.0/NLog.dll": {}
         }
       },
       "NLog.Config/4.5.6": {
@@ -40,19 +38,13 @@
       },
       "xunit.abstractions/2.0.1": {
         "runtime": {
-          "lib/netstandard1.0/xunit.abstractions.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.0"
-          }
+          "lib/netstandard1.0/xunit.abstractions.dll": {}
         }
       },
       "xunit.analyzers/0.7.0": {},
       "xunit.assert/2.3.1": {
         "runtime": {
-          "lib/netstandard1.1/xunit.assert.dll": {
-            "assemblyVersion": "2.3.1.3858",
-            "fileVersion": "2.3.1.3858"
-          }
+          "lib/netstandard1.1/xunit.assert.dll": {}
         }
       },
       "xunit.core/2.3.1": {
@@ -66,10 +58,7 @@
           "xunit.abstractions": "2.0.1"
         },
         "runtime": {
-          "lib/netstandard1.1/xunit.core.dll": {
-            "assemblyVersion": "2.3.1.3858",
-            "fileVersion": "2.3.1.3858"
-          }
+          "lib/netstandard1.1/xunit.core.dll": {}
         }
       },
       "xunit.extensibility.execution/2.3.1": {
@@ -77,10 +66,12 @@
           "xunit.extensibility.core": "2.3.1"
         },
         "runtime": {
-          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
-            "assemblyVersion": "2.3.1.3858",
-            "fileVersion": "2.3.1.3858"
-          }
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {}
+        }
+      },
+      "ContactLibrary/1.0.0": {
+        "runtime": {
+          "ContactLibrary.dll": {}
         }
       }
     }
@@ -160,6 +151,11 @@
       "sha512": "sha512-i8xrHfKC5dyBWQ7I15FePzm0m8KNToBsTleCCQbOQuXRPZIvupd4nnfaCPeJuKHHe7yJ8JGtWxjIgw0ow/cMhg==",
       "path": "xunit.extensibility.execution/2.3.1",
       "hashPath": "xunit.extensibility.execution.2.3.1.nupkg.sha512"
+    },
+    "ContactLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
