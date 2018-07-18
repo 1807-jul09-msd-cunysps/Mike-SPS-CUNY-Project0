@@ -11,7 +11,7 @@ namespace ContactLibrary
     [DataContract]
     public enum Country
     {
-        US = 1, UK = 44, India = 91, Pakistan = 92, Australia = 61, NULL = -1
+        NULL = -1, US = 1, UK = 44, India = 91, Pakistan = 92, Australia = 61
     }
 
     [DataContract]
