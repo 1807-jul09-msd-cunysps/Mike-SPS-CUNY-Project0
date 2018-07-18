@@ -33,3 +33,5 @@ C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\ContactLibrary\obj\Debug\C
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\ContactLibrary\obj\Debug\ContactLibrary.csproj.CopyComplete
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\ContactLibrary\obj\Debug\ContactLibrary.dll
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\ContactLibrary\obj\Debug\ContactLibrary.pdb
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\ContactLibrary\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\ContactLibrary\bin\Debug\Newtonsoft.Json.xml

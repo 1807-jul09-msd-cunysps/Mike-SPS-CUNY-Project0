@@ -25,3 +25,5 @@ C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\ContactLibrary.dll
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\ContactLibrary.pdb
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.csproj.CopyComplete
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\Newtonsoft.Json.xml

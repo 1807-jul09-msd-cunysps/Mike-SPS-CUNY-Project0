@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace ContactLibrary
 {
@@ -45,41 +46,33 @@ namespace ContactLibrary
         }
 
         // JSON Serializer
-        public static string PersonListToJSON(List<Person> contactsAsObjects)
+        public static string PersonListToJSON(List<Person> contacts)
         {
+            string json = "";
             try
             {
-                MemoryStream stream = new MemoryStream();
-                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<Person>));
-                ser.WriteObject(stream, contactsAsObjects);
-                byte[] json = stream.ToArray();
-                stream.Close();
-                return Encoding.UTF8.GetString(json, 0, json.Length);
-            }
-            catch(Exception e)
-            {
-                logger.Info(e.Message);
-                return null;
-            }
-        }
-
-        // JSON Deserializer
-        public static List<Person> JSONToPersonList(string contactsSerialized)
-        {
-            try
-            {
-                List<Person> p = new List<Person>();
-                MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(contactsSerialized));
-                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<Person>));
-                p = ser.ReadObject(ms) as List<Person>;
-                ms.Close();
-                return p;
+                json = JsonConvert.SerializeObject(contacts);
             }
             catch (Exception e)
             {
                 logger.Info(e.Message);
-                return null;
             }
+            return json;
+        }
+
+        // JSON Deserializer
+        public static List<Person> JSONToPersonList(string json)
+        {
+            List<Person> contacts = new List<Person>();
+            try
+            {
+                contacts = JsonConvert.DeserializeObject<List<Person>>(json);
+            }
+            catch (Exception e)
+            {
+                logger.Info(e.Message);
+            }
+            return contacts;
         }
 
         // File Write
