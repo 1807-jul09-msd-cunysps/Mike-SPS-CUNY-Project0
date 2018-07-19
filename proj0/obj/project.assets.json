@@ -315,6 +315,15 @@
         "runtime": {
           "bin/placeholder/ContactLibrary.dll": {}
         }
+      },
+      "DataAccess/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataAccess.dll": {}
+        }
       }
     }
   },
@@ -920,11 +929,17 @@
       "type": "project",
       "path": "../ContactLibrary/ContactLibrary.csproj",
       "msbuildProject": "../ContactLibrary/ContactLibrary.csproj"
+    },
+    "DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../DataAccess/DataAccess.csproj",
+      "msbuildProject": "../DataAccess/DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "ContactLibrary >= 1.0.0",
+      "DataAccess >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "NLog >= 4.5.6",
       "NLog.Config >= 4.5.6",
@@ -963,6 +978,9 @@
           "projectReferences": {
             "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\ContactLibrary\\ContactLibrary.csproj": {
               "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\ContactLibrary\\ContactLibrary.csproj"
+            },
+            "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\DataAccess\\DataAccess.csproj"
             }
           }
         }

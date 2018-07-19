@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ContactLibrary\ContactLibrary.csproj" />
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
