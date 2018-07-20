@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace DataAccess
+namespace DataAccessADOSQL
 {
     [DataContract]
     public class PhoneModel

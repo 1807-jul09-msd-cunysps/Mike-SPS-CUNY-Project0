@@ -1,0 +1,12 @@
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\DataAccessADOSQL.dll.config
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\DataAccessADOSQL.dll
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\DataAccessADOSQL.pdb
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\obj\Debug\DataAccessADOSQL.csprojResolveAssemblyReference.cache
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\obj\Debug\DataAccessADOSQL.csproj.CoreCompileInputs.cache
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\obj\Debug\DataAccessADOSQL.dll
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\obj\Debug\DataAccessADOSQL.pdb
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Data.SqlClient.dll

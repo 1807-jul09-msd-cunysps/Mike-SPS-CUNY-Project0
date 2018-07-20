@@ -1,14 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
 using ContactLibrary;
+using DataAccessADOSQL;
+using System.Data;              // ADO.NET lib
+using System.Data.SqlClient;    // Client in ADO.NET library
 
 namespace proj0
 {
+
+
+
     class Program
     {
+        public static PersonModel MakePerson()
+        {
+            PersonModel person = new PersonModel
+            {
+                Pid = 123456789,
+                Firstname = "Mike",
+                Lastname = "Corso",
+                Address = new AddressModel
+                {
+                    Pid = 123456789,
+                    HouseNum = "7",
+                    Street = "East 14th St",
+                    City = "New York",
+                    State = DataAccessADOSQL.State.NY,
+                    Country = DataAccessADOSQL.Country.US,
+                    Zipcode = "10003"
+                },
+                Phone = new PhoneModel
+                {
+                    Pid = 123456789,
+                    CountryCode = DataAccessADOSQL.Country.US,
+                    AreaCode = "718",
+                    Number = "8130773",
+                    Ext = ""
+                }
+            };
+
+            return person;
+        }
+
         public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();     //logger.Info(e.Message);
         static void Main(string[] args)
         {
+            //DBAccess.InitTables();
+            Console.WriteLine("\n\n\n\n");
+            DBAccess.Add(MakePerson());
+
+            Console.ReadLine();
+
+            /*
+             *  Console App
             string selection = "";
             // For storing query results
             List<Person> results = new List<Person>();
@@ -172,7 +216,8 @@ namespace proj0
                     Console.WriteLine($"\n{selection} is not a valid selection.");
                 }
                 selection = "";
-            }            
+            } 
+            */
         }
     }
 }
