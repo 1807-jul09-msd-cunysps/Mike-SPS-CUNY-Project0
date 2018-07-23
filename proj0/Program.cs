@@ -14,14 +14,13 @@ namespace proj0
     {
         public static PersonModel MakePerson()
         {
+
             PersonModel person = new PersonModel
             {
-                Pid = 123456789,
                 Firstname = "Mike",
                 Lastname = "Corso",
                 Address = new AddressModel
                 {
-                    Pid = 123456789,
                     HouseNum = "7",
                     Street = "East 14th St",
                     City = "New York",
@@ -31,7 +30,6 @@ namespace proj0
                 },
                 Phone = new PhoneModel
                 {
-                    Pid = 123456789,
                     CountryCode = DataAccessADOSQL.Country.US,
                     AreaCode = "718",
                     Number = "8130773",

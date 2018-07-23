@@ -6,7 +6,7 @@ namespace DataAccessADOSQL
     public class PersonModel
     {
         [DataMember]
-        public long Pid { get; set; }
+        public long Id { get; set; }
         [DataMember]
         public string Firstname { get; set; }
         [DataMember]

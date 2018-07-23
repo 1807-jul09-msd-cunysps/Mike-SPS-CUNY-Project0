@@ -17,24 +17,26 @@ namespace DataAccessADOSQL
         public static void InitTables()
         {
             string[] tables = new string[] {
-                    "CREATE TABLE Address(" + 
-                                          "pid BIGINT, " +
+                    "CREATE TABLE person(" +
+                                          "id BIGINT PRIMARY KEY IDENTITY(1,1), " +
+                                          "firstname VARCHAR(35), " +
+                                          "lastname VARCHAR(35));",
+                    "CREATE TABLE address(" +
+                                          "id BIGINT PRIMARY KEY IDENTITY(1,1), " +
+                                          "personID BIGINT FOREIGN KEY REFERENCES person(id)," +
                                           "housenum VARCHAR(25), " +
                                           "street VARCHAR(25), " +
                                           "city VARCHAR(25), " +
                                           "state VARCHAR(4), " +
                                           "country VARCHAR(25), " +
                                           "zipcode VARCHAR(5));",
-                    "CREATE TABLE Phone(" +
-                                          "pid BIGINT, " +
+                    "CREATE TABLE phone(" +
+                                          "id BIGINT PRIMARY KEY IDENTITY(1,1), " +
+                                          "personID BIGINT FOREIGN KEY REFERENCES person(id)," +
                                           "country VARCHAR(25), " +
                                           "areacode VARCHAR(3)," +
                                           "number VARCHAR(7)," +
-                                          "ext VARCHAR(5));",
-                    "CREATE TABLE Person(" +
-                                          "pid BIGINT, " +
-                                          "firstname VARCHAR(25), " +
-                                          "lastname VARCHAR(25));"
+                                          "ext VARCHAR(5));"
             };
             // SQL connection object
             SqlConnection connection = null;
@@ -78,17 +80,41 @@ namespace DataAccessADOSQL
 
                 try
                 {
-                    command.CommandText = "INSERT INTO Phone VALUES (" +    // Phone
-                                          $"{person.Phone.Pid}," +
+                    // Insert Person object
+                    command.CommandText = $"INSERT INTO person VALUES (" +    
+                                         $"'{person.Firstname}', " +
+                                         $"'{person.Lastname}'" +
+                                         ");";
+                    command.ExecuteNonQuery();
+                    // Get Person ID
+                    command.CommandText = "SELECT SCOPE_IDENTITY()";
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        while (reader.Read())
+                        {
+                            Console.WriteLine($"{reader[0]}");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Failed to ExecuteReader");
+                    }
+                    reader.Close();
+                    /*
+                    command.CommandText = "INSERT INTO phone VALUES (" +    // Phone
+                                          $"{person.Phone.Id}," +
                                           $"'{person.Phone.CountryCode}'," +
                                           $"'{person.Phone.AreaCode}'," +
                                           $"'{person.Phone.Number}'," +
                                           $"'{person.Phone.Ext}'" +
                                           ");";
                     command.ExecuteNonQuery();
+
                     
-                    command.CommandText = "INSERT INTO Address VALUES (" +  // Address
-                                          $"{person.Address.Pid}, " +
+                    command.CommandText = "INSERT INTO address VALUES (" +  // Address
+                                          $"{person.Address.Id}, " +
                                           $"'{person.Address.HouseNum}', " +
                                           $"'{person.Address.Street}', " +
                                           $"'{person.Address.City}', " +
@@ -97,14 +123,8 @@ namespace DataAccessADOSQL
                                           $"'{person.Address.Zipcode}'" +
                                           ");";
                     command.ExecuteNonQuery();
-                                                                            
-                    command.CommandText = "INSERT INTO Person VALUES (" +    // Person
-                                          $"{person.Pid}, " +
-                                          $"'{person.Firstname}', " +
-                                          $"'{person.Lastname}'" +
-                                          ");";
-                    command.ExecuteNonQuery();
-                    
+                    */
+
                     transaction.Commit();                                   // Commit transaction
                 }
                 catch (Exception ex)

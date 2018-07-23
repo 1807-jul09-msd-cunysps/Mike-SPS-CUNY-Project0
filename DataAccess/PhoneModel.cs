@@ -6,7 +6,7 @@ namespace DataAccessADOSQL
     public class PhoneModel
     {
         [DataMember]
-        public long Pid { get; set; }
+        public long Id { get; set; }
         [DataMember]
         public Country CountryCode { get; set; }
         [DataMember]

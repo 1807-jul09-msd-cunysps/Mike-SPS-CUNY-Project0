@@ -2,7 +2,7 @@
 CREATE TABLE products (
     ID INT PRIMARY KEY,
     Name VARCHAR(35),
-    Price DECIMAL(2)
+    Price DECIMAL(3)
 );
 
 CREATE TABLE customers (
