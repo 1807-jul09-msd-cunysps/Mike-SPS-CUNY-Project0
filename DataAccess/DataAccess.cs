@@ -43,8 +43,8 @@ namespace DataAccessADOSQL
                 // Try and create all tables
                 foreach (string s in tables)
                 {
-                    connection = new SqlConnection(connectionString);           // Define connection
-                    connection.Open();                                          // Open connection
+                    connection = new SqlConnection(connectionString);               // Define connection
+                    connection.Open();                                              // Open connection
                     try
                     {
                         SqlCommand command = new SqlCommand(s, connection);         // Define command
