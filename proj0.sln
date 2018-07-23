@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitTest", "xUnitTest\xUni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessADOSQL", "DataAccess\DataAccessADOSQL.csproj", "{DCF463D7-A076-4F54-BECB-B80A4D964AF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sqlCodingChallenge", "sqlCodingChallenge\sqlCodingChallenge.csproj", "{4289C249-CFB4-44E8-A8A6-83B8639B3F9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sqlCodingChallenge", "sqlCodingChallenge\sqlCodingChallenge.csproj", "{4289C249-CFB4-44E8-A8A6-83B8639B3F9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{8621C7FC-AE2F-43F3-A74F-4BCC47519B50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4289C249-CFB4-44E8-A8A6-83B8639B3F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4289C249-CFB4-44E8-A8A6-83B8639B3F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4289C249-CFB4-44E8-A8A6-83B8639B3F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8621C7FC-AE2F-43F3-A74F-4BCC47519B50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8621C7FC-AE2F-43F3-A74F-4BCC47519B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8621C7FC-AE2F-43F3-A74F-4BCC47519B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8621C7FC-AE2F-43F3-A74F-4BCC47519B50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,7 +17,6 @@ C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\n
 C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.AssemblyInfo.cs
 C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.dll
 C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.pdb
-C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.csprojResolveAssemblyReference.cache
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\NLog.config
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\proj0.pdb
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.dll
@@ -37,3 +36,7 @@ C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\n
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\DataAccessADOSQL.dll
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\DataAccessADOSQL.pdb
 C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\DataAccessADOSQL.dll.config
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.csprojAssemblyReference.cache
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\proj0\obj\Debug\netcoreapp2.0\proj0.csproj.CopyComplete
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\Models.dll
+C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\proj0\bin\Debug\netcoreapp2.0\Models.pdb

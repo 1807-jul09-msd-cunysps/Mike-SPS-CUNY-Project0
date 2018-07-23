@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ContactLibrary;
 using DataAccessADOSQL;
+using Models;
 using System.Data;              // ADO.NET lib
 using System.Data.SqlClient;    // Client in ADO.NET library
 
@@ -17,20 +18,48 @@ namespace proj0
 
             PersonModel person = new PersonModel
             {
-                Firstname = "Mike",
+                Firstname = "Sal",
                 Lastname = "Corso",
                 Address = new AddressModel
                 {
                     HouseNum = "7",
                     Street = "East 14th St",
                     City = "New York",
-                    State = DataAccessADOSQL.State.NY,
-                    Country = DataAccessADOSQL.Country.US,
+                    State = Models.State.NY,
+                    Country = Models.Country.US,
                     Zipcode = "10003"
                 },
                 Phone = new PhoneModel
                 {
-                    CountryCode = DataAccessADOSQL.Country.US,
+                    CountryCode = Models.Country.US,
+                    AreaCode = "718",
+                    Number = "8130773",
+                    Ext = ""
+                }
+            };
+
+            return person;
+        }
+
+        public static PersonModel MakePerson2()
+        {
+
+            PersonModel person = new PersonModel
+            {
+                Firstname = "John",
+                Lastname = "Corso",
+                Address = new AddressModel
+                {
+                    HouseNum = "7",
+                    Street = "East 14th St",
+                    City = "New York",
+                    State = Models.State.NY,
+                    Country = Models.Country.US,
+                    Zipcode = "10003"
+                },
+                Phone = new PhoneModel
+                {
+                    CountryCode = Models.Country.US,
                     AreaCode = "718",
                     Number = "8130773",
                     Ext = ""
@@ -45,7 +74,8 @@ namespace proj0
         {
             //DBAccess.InitTables();
             Console.WriteLine("\n\n\n\n");
-            DBAccess.Add(MakePerson());
+            //DBAccess.Add(MakePerson());
+            DBAccess.Search("Sal");
 
             Console.ReadLine();
 

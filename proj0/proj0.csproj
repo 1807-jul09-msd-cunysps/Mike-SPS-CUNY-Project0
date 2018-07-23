@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ContactLibrary\ContactLibrary.csproj" />
     <ProjectReference Include="..\DataAccess\DataAccessADOSQL.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 
 </Project>
