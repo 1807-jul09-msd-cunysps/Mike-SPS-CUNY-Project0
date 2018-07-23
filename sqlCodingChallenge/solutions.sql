@@ -2,7 +2,7 @@
 CREATE TABLE products (
     ID INT PRIMARY KEY,
     Name VARCHAR(35),
-    Price INT
+    Price DECIMAL(2)
 );
 
 CREATE TABLE customers (
@@ -68,7 +68,7 @@ SELECT p.ID, p.Name, SUM(Price)
 	FROM products AS p
 	INNER JOIN orders AS o ON p.ID = o.ProductID
 	WHERE p.Name = 'iPhone'
-	GROUP BY p.ID, Name;
+	GROUP BY p.ID, p.Name;
 
 -- Increase price of iPhone to 250
 UPDATE products
