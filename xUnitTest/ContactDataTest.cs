@@ -2,6 +2,7 @@
 using ContactLibrary;
 using Xunit.Abstractions;
 using System.Collections.Generic;
+using Models;
 
 namespace xUnitTest
 {
@@ -10,7 +11,7 @@ namespace xUnitTest
     {
         private readonly ITestOutputHelper output;
         public static string testFileName = "test-contacts.dat";
-        public static List<Person> testContacts = new List<Person>();
+        public static List<PersonModel> testContacts = new List<PersonModel>();
 
         public ContactDataTest(ITestOutputHelper output)
         {
@@ -51,7 +52,7 @@ namespace xUnitTest
 
             // Debug output for Add
             output.WriteLine($"Contacts after Add:");
-            foreach (Person p in ContactDataAccess.contacts)
+            foreach (PersonModel p in ContactDataAccess.contacts)
                 output.WriteLine(p.Print());
 
             // Assert 3 Person were added
@@ -64,8 +65,8 @@ namespace xUnitTest
                                           houseNum: null,
                                           street: "999",
                                           city: null,
-                                          state: ContactLibrary.State.NULL,
-                                          country: ContactLibrary.Country.UK,
+                                          state: State.NULL,
+                                          country: Country.UK,
                                           zipcode: "99999",
                                           areaCode: "999",
                                           number: "9999999",
@@ -73,7 +74,7 @@ namespace xUnitTest
 
             // Debug output for Update
             output.WriteLine($"\nContacts after Update 'Mike Powell':");
-            foreach (Person p in ContactDataAccess.contacts)
+            foreach (PersonModel p in ContactDataAccess.contacts)
                 output.WriteLine(p.Print());
 
             //
@@ -82,7 +83,7 @@ namespace xUnitTest
 
             // Debug output for Delete
             output.WriteLine($"\nContacts after Deleting Kate Powell:");
-            foreach (Person p in ContactDataAccess.contacts)
+            foreach (PersonModel p in ContactDataAccess.contacts)
                 output.WriteLine(p.Print());
 
             // Assert Delete
@@ -90,7 +91,7 @@ namespace xUnitTest
 
             //
             // Search Test
-            List<Person> results = new List<Person>();
+            List<PersonModel> results = new List<PersonModel>();
             // Queries to test first name, last name, city, zip code, and phone number
             string[] queries = new string[] { "Mike", "Smith", "Miami", "43564", "6948747" };
             foreach (string q in queries)
@@ -99,7 +100,7 @@ namespace xUnitTest
                 results = ContactDataAccess.Search(q);
                 // Debug output for Query
                 output.WriteLine($"\nSearch results with query '{q}':");
-                foreach (Person p in results)
+                foreach (PersonModel p in results)
                     output.WriteLine(p.Print());
                 // Assert one return
                 Assert.Single(results);
@@ -107,8 +108,8 @@ namespace xUnitTest
 
             //
             // Serialization Test
-            string json = ContactDataIO.PersonListToJSON(ContactDataAccess.contacts);
-            testContacts = ContactDataIO.JSONToPersonList(json);
+            string json = ContactDataIO.PersonModelListToJSON(ContactDataAccess.contacts);
+            testContacts = ContactDataIO.JSONToPersonModelList(json);
 
             // Compare List<Person>s
             string listAsStringPreConversions = "", listAsStringPostConversions = "";
@@ -132,13 +133,13 @@ namespace xUnitTest
             testContacts = ContactDataIO.GetContacts(testFileName);
 
             output.WriteLine($"ContactDataAccess.contacts:");
-            foreach (Person p in ContactDataAccess.contacts)
+            foreach (PersonModel p in ContactDataAccess.contacts)
             {
                 output.WriteLine(p.Print());
             }
 
             output.WriteLine($"\ntestContacts:");
-            foreach (Person p in testContacts)
+            foreach (PersonModel p in testContacts)
             {
                 output.WriteLine(p.Print());
             }

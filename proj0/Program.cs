@@ -8,9 +8,6 @@ using System.Data.SqlClient;    // Client in ADO.NET library
 
 namespace proj0
 {
-
-
-
     class Program
     {
         public static PersonModel MakePerson()
@@ -75,23 +72,10 @@ namespace proj0
         public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();     //logger.Info(e.Message);
         static void Main(string[] args)
         {
-            //DBAccess.InitTables();
-            Console.WriteLine("\n\n\n\n");
-            //DBAccess.Add(MakePerson());
-            //foreach (PersonModel p in DBAccess.Search("10003"))
-            //{
-            //    Console.WriteLine(p.Print());
-            //}
-            // Console.WriteLine(DBAccess.GetPersonById(8).Print());
-            //DBAccess.Delete(6);
-            DBAccess.Update(UpdatePerson());
-            Console.ReadLine();
-
-            /*
-             *  Console App
+            //DBAccess.WipeItAll();
             string selection = "";
             // For storing query results
-            List<Person> results = new List<Person>();
+            List<PersonModel> results = new List<PersonModel>();
             // Load contacts from file
             ContactDataAccess.contacts = ContactDataIO.GetContacts();
             while (true)
@@ -111,9 +95,13 @@ namespace proj0
                 }
                 else if (selection == "1")
                 {
-                    if (ContactDataAccess.contacts.Count > 0) {
+                    if (ContactDataAccess.contacts == null)
+                    {
+                        Console.WriteLine($"\nNo entries in Contacts.");
+                    }
+                    else if (ContactDataAccess.contacts.Count > 0) {
                         Console.WriteLine($"\n{ContactDataAccess.contacts.Count} Contacts\n");
-                        foreach (Person p in ContactDataAccess.contacts)
+                        foreach (PersonModel p in ContactDataAccess.contacts)
                         {
                             Console.WriteLine(p.Print());
                         }
@@ -235,7 +223,7 @@ namespace proj0
                     if (results.Count > 0)
                     {
                         Console.WriteLine($"\n{results.Count} Contacts in query \"{query}\"\n");
-                        foreach (Person p in results)
+                        foreach (PersonModel p in results)
                         {
                             Console.WriteLine(p.Print());
                         }
@@ -253,7 +241,6 @@ namespace proj0
                 }
                 selection = "";
             } 
-            */
         }
     }
 }

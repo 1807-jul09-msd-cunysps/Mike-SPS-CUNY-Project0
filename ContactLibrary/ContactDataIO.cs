@@ -4,6 +4,7 @@ using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using Newtonsoft.Json;
+using Models;
 
 namespace ContactLibrary
 {
@@ -12,30 +13,33 @@ namespace ContactLibrary
         public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();     //logger.Info(e.Message);
         private const string contactFile = "contacts.dat";
 
-        // Read contacts file and return as List<Person>
-        public static List<Person> GetContacts(string fileName = contactFile)
+        // Read contacts file and return as List<PersonModel>
+        public static List<PersonModel> GetContacts(string fileName = contactFile)
         {
             try
             {
                 string contactsSerialized = ReadContactListFromFile(fileName);
-                List<Person> p = new List<Person>(JSONToPersonList(contactsSerialized));
+                var temp = JSONToPersonModelList(contactsSerialized);
+                List<PersonModel> p = new List<PersonModel>();
+                if (temp != null)
+                    p = new List<PersonModel>(JSONToPersonModelList(contactsSerialized));
                 return p;
             }
             catch (Exception e)
             {
-                logger.Info(e.Message);
+                logger.Info($"ContactDataIO.GetContacts:{e.Message}");
                 return null;
             }
         }
 
         // Write contacts to file
-        public static bool WriteContacts(List<Person> p, string fileName = contactFile)
+        public static bool WriteContacts(List<PersonModel> p, string fileName = contactFile)
         {
             try
             {
-                string contactsSerialized = PersonListToJSON(p);
+                string contactsSerialized = PersonModelListToJSON(p);
                 if (contactsSerialized == null)
-                    throw new Exception($"ContactDataIO.cs\nWriteContactsToFile (line 39).\nPersonListToJSON(line 53) returned null.");
+                    throw new Exception($"ContactDataIO.cs\nWriteContactsToFile (line 39).\nPersonModelListToJSON(line 53) returned null.");
                 return WriteContactListToFile(contactsSerialized, fileName);
             }
             catch (Exception e)
@@ -46,7 +50,7 @@ namespace ContactLibrary
         }
 
         // JSON Serializer
-        public static string PersonListToJSON(List<Person> contacts)
+        public static string PersonModelListToJSON(List<PersonModel> contacts)
         {
             string json = "";
             try
@@ -61,12 +65,12 @@ namespace ContactLibrary
         }
 
         // JSON Deserializer
-        public static List<Person> JSONToPersonList(string json)
+        public static List<PersonModel> JSONToPersonModelList(string json)
         {
-            List<Person> contacts = new List<Person>();
+            List<PersonModel> contacts = new List<PersonModel>();
             try
             {
-                contacts = JsonConvert.DeserializeObject<List<Person>>(json);
+                contacts = JsonConvert.DeserializeObject<List<PersonModel>>(json);
             }
             catch (Exception e)
             {

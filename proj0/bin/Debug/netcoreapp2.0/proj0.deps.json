@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "2927fca01348928c6aafd4a85dddef198af7827d"
+    "signature": "065aa954883e71a8bfaaad703f4e98772406ed5e"
   },
   "compilationOptions": {},
   "targets": {
@@ -13,6 +13,7 @@
           "Models": "1.0.0",
           "NLog": "4.5.6",
           "NLog.Config": "4.5.6",
+          "Newtonsoft.Json": "11.0.2",
           "System.Data.SqlClient": "4.5.1",
           "xunit": "2.3.1"
         },
@@ -38,6 +39,11 @@
             "rid": "win",
             "assetType": "runtime"
           }
+        }
+      },
+      "Newtonsoft.Json/11.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "NLog/4.5.6": {
@@ -208,6 +214,10 @@
         }
       },
       "ContactLibrary/1.0.0": {
+        "dependencies": {
+          "DataAccessADOSQL": "1.0.0",
+          "Models": "1.0.0"
+        },
         "runtime": {
           "ContactLibrary.dll": {}
         }
@@ -221,6 +231,9 @@
         }
       },
       "Models/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
         "runtime": {
           "Models.dll": {}
         }
@@ -239,6 +252,13 @@
       "sha512": "sha512-vduxuHEqRgRrTE8wYG8Wxj/+6wwzddOmZzjKZx6rFMc/91aUBxI5etAFYxesoNaIja5NpgSTcnk6cN8BeYXf9A==",
       "path": "microsoft.win32.registry/4.5.0",
       "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/11.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "path": "newtonsoft.json/11.0.2",
+      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
     },
     "NLog/4.5.6": {
       "type": "package",

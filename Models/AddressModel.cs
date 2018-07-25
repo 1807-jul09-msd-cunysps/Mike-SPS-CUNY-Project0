@@ -18,9 +18,9 @@ namespace Models
     public class AddressModel
     {
         [DataMember]
-        public long Id { get; set; }
+        public int Id { get; set; }
         [DataMember]
-        public long PersonId { get; set; }
+        public int PersonId { get; set; }
         [DataMember]
         public string HouseNum { get; set; }
         [DataMember]

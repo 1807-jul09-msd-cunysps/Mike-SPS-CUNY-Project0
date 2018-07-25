@@ -8,6 +8,8 @@ namespace DataAccessADOSQL
 {
     public static class DBAccess
     {
+        public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();     //logger.Info(e.Message);
+
         private static string connectionString = "Data Source=rev-training-mc-dbs.database.windows.net;" +   // SQL Server
                                                  "Initial Catalog=rev-training-mc-contacts-db;" +            // SQL DB
                                                  "Persist Security Info=True;" +                             // Security
@@ -70,7 +72,7 @@ namespace DataAccessADOSQL
             }
         }
 
-        public static void Add(PersonModel person)
+        public static int Add(PersonModel person)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -127,10 +129,13 @@ namespace DataAccessADOSQL
 
                     // Commit transaction
                     transaction.Commit();
+
+                    // return id
+                    return pid;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    logger.Info($"DataAccessADOSQL.DataAccess.Add: {ex.Message}");
                     try
                     {
                         // Roll back if exception
@@ -142,6 +147,7 @@ namespace DataAccessADOSQL
                     }
                 }
             }
+            return -1;
         }
 
         public static void Update(PersonModel newInfo)
@@ -152,16 +158,16 @@ namespace DataAccessADOSQL
                 SqlTransaction transaction = connection.BeginTransaction(); // Create transaction
                 SqlCommand command = connection.CreateCommand();            // Create command
                 command.Transaction = transaction;                          // Assign transaction to command
-
+                Console.WriteLine($"DataAccess.Update: Before try");
                 try
                 {
                     // UPDATE for person
                     command.CommandText = $"UPDATE person " +
                                           $"SET firstname = '{newInfo.Firstname}', " +
                                           $"lastname = '{newInfo.Lastname}' " +
-                                          $"WHERE person.id = {newInfo.Id};";
+                                          $"WHERE id = {newInfo.Id};";
                     command.ExecuteNonQuery();
-
+                    Console.WriteLine($"DataAccess.Update: Before phone");
                     // UPDATE for phone
                     command.CommandText = $"UPDATE phone " +
                                           $"SET country = '{newInfo.Phone.CountryCode}', " +
@@ -170,7 +176,7 @@ namespace DataAccessADOSQL
                                           $"ext = '{newInfo.Phone.Ext}' " +
                                           $"WHERE personid = {newInfo.Id};";
                     command.ExecuteNonQuery();
-
+                    Console.WriteLine($"DataAccess.Update: Before addr");
                     // UPDATE for address
                     command.CommandText = $"UPDATE address " +
                                           $"SET housenum = '{newInfo.Address.HouseNum}', " +
@@ -181,12 +187,14 @@ namespace DataAccessADOSQL
                                           $"zipcode = '{newInfo.Address.Zipcode}' " +
                                           $"WHERE personid = {newInfo.Id};";
                     command.ExecuteNonQuery();
+                    Console.WriteLine($"DataAccess.Update: Before commit");
                     // Commit transaction
                     transaction.Commit();
+                    Console.WriteLine($"DataAccess.Update: after commit");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    logger.Info($"DataAccessADOSQL.DataAccess.Update: {ex.Message}");
                     try
                     {
                         // Roll back if exception
@@ -383,6 +391,48 @@ namespace DataAccessADOSQL
                 }
             }
             return results;
+        }
+
+        public static void WipeItAll()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();                                          // Open connection
+                SqlTransaction transaction = connection.BeginTransaction(); // Create transaction
+                SqlCommand command = connection.CreateCommand();            // Create command
+                command.Transaction = transaction;                          // Assign transaction to command
+
+                try
+                {
+                    // DELETE for phone
+                    command.CommandText = $"DELETE FROM phone;";
+                    command.ExecuteNonQuery();
+
+                    // DELETE for address
+                    command.CommandText = $"DELETE FROM address;";
+                    command.ExecuteNonQuery();
+
+                    // DELETE for person
+                    command.CommandText = $"DELETE FROM person;";
+                    command.ExecuteNonQuery();
+
+                    // Commit transaction
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    try
+                    {
+                        // Roll back if exception
+                        transaction.Rollback();
+                    }
+                    catch (Exception exRollback)
+                    {
+                        Console.WriteLine(exRollback.Message);
+                    }
+                }
+            }
         }
     }
 }

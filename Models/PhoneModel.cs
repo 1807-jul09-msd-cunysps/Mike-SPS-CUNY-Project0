@@ -6,9 +6,9 @@ namespace Models
     public class PhoneModel
     {
         [DataMember]
-        public long Id { get; set; }
+        public int Id { get; set; }
         [DataMember]
-        public long PersonId { get; set; }
+        public int PersonId { get; set; }
         [DataMember]
         public Country CountryCode { get; set; }
         [DataMember]
