@@ -144,7 +144,7 @@ namespace DataAccessADOSQL
             }
         }
 
-        public static void Update(PersonModel oldInfo, PersonModel newInfo)
+        public static void Update(PersonModel newInfo)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -155,48 +155,77 @@ namespace DataAccessADOSQL
 
                 try
                 {
-                    // INSERT for person
-                    command.CommandText = $"INSERT INTO person VALUES (" +
-                                          $"'{newInfo.Firstname}', " +
-                                          $"'{newInfo.Lastname}'" +
-                                          ");";
+                    // UPDATE for person
+                    command.CommandText = $"UPDATE person " +
+                                          $"SET firstname = '{newInfo.Firstname}', " +
+                                          $"lastname = '{newInfo.Lastname}' " +
+                                          $"WHERE person.id = {newInfo.Id};";
                     command.ExecuteNonQuery();
 
-                    // Retrieve Person ID for person we just submitted
-                    int pid;
-                    command.CommandText = "SELECT SCOPE_IDENTITY()";
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        pid = Int32.Parse(reader[0].ToString());
-                    }
-                    else
-                    {
-                        throw new Exception("Failed to ExecuteReader");
-                    }
-                    reader.Close();
-
-                    // INSERT for phone
-                    command.CommandText = $"INSERT INTO phone VALUES (" +
-                                          $"{pid}," +
-                                          $"'{newInfo.Phone.CountryCode}'," +
-                                          $"'{newInfo.Phone.AreaCode}'," +
-                                          $"'{newInfo.Phone.Number}'," +
-                                          $"'{newInfo.Phone.Ext}'" +
-                                          ");";
+                    // UPDATE for phone
+                    command.CommandText = $"UPDATE phone " +
+                                          $"SET country = '{newInfo.Phone.CountryCode}', " +
+                                          $"areacode = '{newInfo.Phone.AreaCode}', " +
+                                          $"number = '{newInfo.Phone.Number}', " +
+                                          $"ext = '{newInfo.Phone.Ext}' " +
+                                          $"WHERE personid = {newInfo.Id};";
                     command.ExecuteNonQuery();
 
-                    // INSERT for address
-                    command.CommandText = "INSERT INTO address VALUES (" +
-                                          $"{pid}, " +
-                                          $"'{newInfo.Address.HouseNum}', " +
-                                          $"'{newInfo.Address.Street}', " +
-                                          $"'{newInfo.Address.City}', " +
-                                          $"'{newInfo.Address.State}', " +
-                                          $"'{newInfo.Address.Country}', " +
-                                          $"'{newInfo.Address.Zipcode}'" +
-                                          ");";
+                    // UPDATE for address
+                    command.CommandText = $"UPDATE address " +
+                                          $"SET housenum = '{newInfo.Address.HouseNum}', " +
+                                          $"street = '{newInfo.Address.Street}', " +
+                                          $"city = '{newInfo.Address.City}', " +
+                                          $"state = '{newInfo.Address.State}', " +
+                                          $"country = '{newInfo.Address.Country}', " +
+                                          $"zipcode = '{newInfo.Address.Zipcode}' " +
+                                          $"WHERE personid = {newInfo.Id};";
+                    command.ExecuteNonQuery();
+                    // Commit transaction
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    try
+                    {
+                        // Roll back if exception
+                        transaction.Rollback();
+                    }
+                    catch (Exception exRollback)
+                    {
+                        Console.WriteLine(exRollback.Message);
+                    }
+                }
+            }
+        }
+
+        public static void Delete(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();                                          // Open connection
+                SqlTransaction transaction = connection.BeginTransaction(); // Create transaction
+                SqlCommand command = connection.CreateCommand();            // Create command
+                command.Transaction = transaction;                          // Assign transaction to command
+
+                try
+                {
+
+
+                    // DELETE for phone
+                    command.CommandText = $"DELETE FROM phone " +
+                                          $"WHERE phone.personid = {id};";
+                    command.ExecuteNonQuery();
+
+                    // DELETE for address
+                    command.CommandText = $"DELETE FROM address " +
+                                          $"WHERE address.personid = {id};";
+                    command.ExecuteNonQuery();
+
+                    // DELETE for person
+                    command.CommandText = $"DELETE FROM person " +
+                                          $"WHERE person.id = {id};";
                     command.ExecuteNonQuery();
 
                     // Commit transaction
@@ -218,78 +247,69 @@ namespace DataAccessADOSQL
             }
         }
 
-        public static void Delete(PersonModel person)
+        public static PersonModel GetPersonById(int id)
         {
+            // Person to return
+            PersonModel person = null;
+            // SQL interaction
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();                                          // Open connection
-                SqlTransaction transaction = connection.BeginTransaction(); // Create transaction
                 SqlCommand command = connection.CreateCommand();            // Create command
-                command.Transaction = transaction;                          // Assign transaction to command
 
                 try
                 {
-                    // INSERT for person
-                    command.CommandText = $"INSERT INTO person VALUES (" +
-                                          $"'{person.Firstname}', " +
-                                          $"'{person.Lastname}'" +
-                                          ");";
-                    command.ExecuteNonQuery();
-
-                    // Retrieve Person ID for person we just submitted
-                    int pid;
-                    command.CommandText = "SELECT SCOPE_IDENTITY()";
+                    // Get by person.id           
+                    command.CommandText = $"SELECT * FROM person " +
+                                          $"LEFT JOIN phone ON person.ID = phone.personID " +
+                                          $"LEFT JOIN address ON person.ID = address.personID " +
+                                          $"WHERE LOWER(person.id) = {id}" +
+                                          $";";
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+                    int count = 0;
+                    while (reader.Read())
                     {
-                        reader.Read();
-                        pid = Int32.Parse(reader[0].ToString());
-                    }
-                    else
-                    {
-                        throw new Exception("Failed to ExecuteReader");
+                        count++;
+                        person = new PersonModel()
+                        {
+                            Id = Int32.Parse(reader[0].ToString()),
+                            Firstname = reader[1].ToString(),
+                            Lastname = reader[2].ToString(),
+                            Phone = new PhoneModel
+                            {
+                                Id = Int32.Parse(reader[3].ToString()),
+                                PersonId = Int32.Parse(reader[4].ToString()),
+                                CountryCode = (Country)Enum.Parse(typeof(Country), reader[5].ToString()),
+                                AreaCode = reader[6].ToString(),
+                                Number = reader[7].ToString(),
+                                Ext = reader[8].ToString()
+                            },
+                            Address = new AddressModel
+                            {
+                                Id = Int32.Parse(reader[9].ToString()),
+                                PersonId = Int32.Parse(reader[10].ToString()),
+                                HouseNum = reader[11].ToString(),
+                                Street = reader[12].ToString(),
+                                City = reader[13].ToString(),
+                                State = (State)Enum.Parse(typeof(State), reader[14].ToString()),
+                                Country = (Country)Enum.Parse(typeof(Country), reader[15].ToString()),
+                                Zipcode = reader[16].ToString()
+                            }
+                        };
                     }
                     reader.Close();
-
-                    // INSERT for phone
-                    command.CommandText = $"INSERT INTO phone VALUES (" +
-                                          $"{pid}," +
-                                          $"'{person.Phone.CountryCode}'," +
-                                          $"'{person.Phone.AreaCode}'," +
-                                          $"'{person.Phone.Number}'," +
-                                          $"'{person.Phone.Ext}'" +
-                                          ");";
-                    command.ExecuteNonQuery();
-
-                    // INSERT for address
-                    command.CommandText = "INSERT INTO address VALUES (" +
-                                          $"{pid}, " +
-                                          $"'{person.Address.HouseNum}', " +
-                                          $"'{person.Address.Street}', " +
-                                          $"'{person.Address.City}', " +
-                                          $"'{person.Address.State}', " +
-                                          $"'{person.Address.Country}', " +
-                                          $"'{person.Address.Zipcode}'" +
-                                          ");";
-                    command.ExecuteNonQuery();
-
-                    // Commit transaction
-                    transaction.Commit();
+                    if (count > 1)
+                    {
+                        person = null;
+                        throw new Exception($"Reader returned multipled rows searching for ID: {id}");
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    try
-                    {
-                        // Roll back if exception
-                        transaction.Rollback();
-                    }
-                    catch (Exception exRollback)
-                    {
-                        Console.WriteLine(exRollback.Message);
-                    }
                 }
             }
+            return person;
         }
 
         public static List<PersonModel> Search(string s)
@@ -309,7 +329,11 @@ namespace DataAccessADOSQL
                     command.CommandText = $"SELECT * FROM person " +
                                           $"LEFT JOIN phone ON person.ID = phone.personID " +
                                           $"LEFT JOIN address ON person.ID = address.personID " +
-                                          $"WHERE LOWER(person.firstname) = '{query}'" +
+                                          $"WHERE LOWER(person.firstname) = '{query}' " +
+                                          $"OR LOWER(person.lastname) = '{query}' " +
+                                          $"OR LOWER(address.zipcode) = '{query}' " +
+                                          $"OR LOWER(address.city) = '{query}' " +
+                                          $"OR LOWER(phone.number) = '{query}' " +
                                           $";";
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
@@ -340,85 +364,9 @@ namespace DataAccessADOSQL
                                 Zipcode = reader[16].ToString()
                             }
                         };
-
-                        Console.WriteLine(p.Print());
-                    }
-
-                    //DataTable schema = reader.GetSchemaTable();
-                    //foreach (DataRow row in schema.Rows)
-                    //{
-                    //    Console.WriteLine($"");
-                    //    foreach (DataColumn col in schema.Columns)
-                    //    {
-                    //        Console.Write($"{row[col].ToString()}");
-                    //    }
-                    //}
-
-                    //if (reader.HasRows)
-                    //{
-                    //    while (reader.Read())
-                    //    {
-                    //        var t = reader.GetValues();
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    throw new Exception("Failed to ExecuteReader");
-                    //}
-                    reader.Close();
-                    //results = (from p in contacts
-                    //           where p.Firstname.Contains(query) ||
-                    //                 p.Lastname.Contains(query) ||
-                    //                 p.Address.City.Contains(query) ||
-                    //                 p.Address.Zipcode.Contains(query) ||
-                    //                 p.Phone.Number.Contains(query)
-                    //           select p).ToList();
-                    // Return query results
-                    /*
-                    // INSERT for person
-                    command.CommandText = $"INSERT INTO person VALUES (" +
-                                          $"'{person.Firstname}', " +
-                                          $"'{person.Lastname}'" +
-                                          ");";
-                    command.ExecuteNonQuery();
-
-                    // Retrieve Person ID for person we just submitted
-                    int pid;
-                    command.CommandText = "SELECT SCOPE_IDENTITY()";
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        pid = Int32.Parse(reader[0].ToString());
-                    }
-                    else
-                    {
-                        throw new Exception("Failed to ExecuteReader");
+                        results.Add(p);
                     }
                     reader.Close();
-
-                    // INSERT for phone
-                    command.CommandText = $"INSERT INTO phone VALUES (" +
-                                          $"{pid}," +
-                                          $"'{person.Phone.CountryCode}'," +
-                                          $"'{person.Phone.AreaCode}'," +
-                                          $"'{person.Phone.Number}'," +
-                                          $"'{person.Phone.Ext}'" +
-                                          ");";
-                    command.ExecuteNonQuery();
-
-                    // INSERT for address
-                    command.CommandText = "INSERT INTO address VALUES (" +
-                                          $"{pid}, " +
-                                          $"'{person.Address.HouseNum}', " +
-                                          $"'{person.Address.Street}', " +
-                                          $"'{person.Address.City}', " +
-                                          $"'{person.Address.State}', " +
-                                          $"'{person.Address.Country}', " +
-                                          $"'{person.Address.Zipcode}'" +
-                                          ");";
-                    command.ExecuteNonQuery();
-                    */
                 }
                 catch (Exception ex)
                 {

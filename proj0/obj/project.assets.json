@@ -1515,26 +1515,23 @@
   },
   "packageFolders": {
     "C:\\Users\\Mike\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\proj0.csproj",
+      "projectUniqueName": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\proj0.csproj",
       "projectName": "proj0",
-      "projectPath": "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\proj0.csproj",
+      "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\proj0.csproj",
       "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\obj\\",
+      "outputPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\proj0\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -1546,14 +1543,14 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\ContactLibrary\\ContactLibrary.csproj": {
-              "projectPath": "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\ContactLibrary\\ContactLibrary.csproj"
+            "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\ContactLibrary\\ContactLibrary.csproj": {
+              "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\ContactLibrary\\ContactLibrary.csproj"
             },
-            "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\DataAccess\\DataAccessADOSQL.csproj": {
-              "projectPath": "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\DataAccess\\DataAccessADOSQL.csproj"
+            "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\DataAccess\\DataAccessADOSQL.csproj": {
+              "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\DataAccess\\DataAccessADOSQL.csproj"
             },
-            "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\Mike\\Documents\\Coding\\Revature\\Mike-SPS-CUNY-Project0\\Models\\Models.csproj"
+            "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\Models\\Models.csproj"
             }
           }
         }

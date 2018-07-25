@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessADOSQL", "DataAcc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sqlCodingChallenge", "sqlCodingChallenge\sqlCodingChallenge.csproj", "{4289C249-CFB4-44E8-A8A6-83B8639B3F9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{8621C7FC-AE2F-43F3-A74F-4BCC47519B50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{8621C7FC-AE2F-43F3-A74F-4BCC47519B50}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WebApp", "WebApp\WebApp.vbproj", "{E5C8C57D-D3DE-4ADB-9D74-C3564EEF2564}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{8621C7FC-AE2F-43F3-A74F-4BCC47519B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8621C7FC-AE2F-43F3-A74F-4BCC47519B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8621C7FC-AE2F-43F3-A74F-4BCC47519B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C8C57D-D3DE-4ADB-9D74-C3564EEF2564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C8C57D-D3DE-4ADB-9D74-C3564EEF2564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C8C57D-D3DE-4ADB-9D74-C3564EEF2564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C8C57D-D3DE-4ADB-9D74-C3564EEF2564}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

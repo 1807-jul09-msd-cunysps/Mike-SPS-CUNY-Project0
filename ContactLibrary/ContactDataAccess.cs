@@ -155,54 +155,5 @@ namespace ContactLibrary
             // Return query results
             return results;
         }
-
-        /*
-        public static List<Person> Search(string firstName = null,
-                                          string lastName = null,
-                                          string zipcode = null,
-                                          string city = null,
-                                          string phoneNumber = null)
-        {
-            // List to return query results
-            List<Person> results = new List<Person>();
-            // Search by first name
-            if (firstName != null)
-            {
-                results = (from p in contacts
-                           where p.Firstname == firstName
-                           select p).ToList();
-            }
-            // Search by last name
-            else if (lastName != null)
-            {
-                results = (from p in contacts
-                           where p.Lastname == lastName
-                           select p).ToList();
-            }
-            // Search by zip code
-            else if (zipcode != null)
-            {
-                results = (from p in contacts
-                           where p.Address.Zipcode == zipcode
-                           select p).ToList();
-            }
-            // Search by City
-            else if (city != null)
-            {
-                results = (from p in contacts
-                           where p.Address.City == city
-                           select p).ToList();
-            }
-            // Search by Phone Number
-            else if (phoneNumber != null)
-            {
-                results = (from p in contacts
-                           where p.Phone.Number == phoneNumber
-                           select p).ToList();
-            }
-            // Return query results
-            return results;
-        }
-        */
     }
 }

@@ -38,3 +38,17 @@ C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\De
 C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Xml.XPath.XDocument.dll
 C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\Models.dll
 C:\Users\Mike\Documents\Coding\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\Models.pdb
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Data.Common.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Diagnostics.StackTrace.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Diagnostics.Tracing.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Globalization.Extensions.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.IO.Compression.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Net.Http.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Net.Sockets.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Runtime.Serialization.Primitives.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Security.SecureString.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Threading.Overlapped.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\System.Xml.XPath.XDocument.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\Models.dll
+C:\Users\Mike\Desktop\Revature\Mike-SPS-CUNY-Project0\DataAccess\bin\Debug\Models.pdb

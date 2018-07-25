@@ -41,17 +41,19 @@ namespace proj0
             return person;
         }
 
-        public static PersonModel MakePerson2()
+        public static PersonModel UpdatePerson()
         {
 
             PersonModel person = new PersonModel
             {
-                Firstname = "John",
+                Id = 5,
+                Firstname = "Jonathan",
                 Lastname = "Corso",
                 Address = new AddressModel
                 {
+                    PersonId = 5,
                     HouseNum = "7",
-                    Street = "East 14th St",
+                    Street = "NEW STREET BREH",
                     City = "New York",
                     State = Models.State.NY,
                     Country = Models.Country.US,
@@ -59,9 +61,10 @@ namespace proj0
                 },
                 Phone = new PhoneModel
                 {
+                    PersonId = 5,
                     CountryCode = Models.Country.US,
                     AreaCode = "718",
-                    Number = "8130773",
+                    Number = "1234567",
                     Ext = ""
                 }
             };
@@ -75,8 +78,13 @@ namespace proj0
             //DBAccess.InitTables();
             Console.WriteLine("\n\n\n\n");
             //DBAccess.Add(MakePerson());
-            DBAccess.Search("Sal");
-
+            //foreach (PersonModel p in DBAccess.Search("10003"))
+            //{
+            //    Console.WriteLine(p.Print());
+            //}
+            // Console.WriteLine(DBAccess.GetPersonById(8).Print());
+            //DBAccess.Delete(6);
+            DBAccess.Update(UpdatePerson());
             Console.ReadLine();
 
             /*
