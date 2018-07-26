@@ -89,9 +89,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ContactLibrary\ContactLibrary.csproj">
-      <Project>{d274a824-c3a1-49c3-a5fe-48f215b6c8d7}</Project>
-      <Name>ContactLibrary</Name>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{dcf463d7-a076-4f54-becb-b80a4d964af4}</Project>
+      <Name>DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{8621c7fc-ae2f-43f3-a74f-4bcc47519b50}</Project>

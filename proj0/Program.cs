@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ContactLibrary;
-using DataAccessADOSQL;
 using Models;
-using System.Data;              // ADO.NET lib
-using System.Data.SqlClient;    // Client in ADO.NET library
+using DataAccess;
 
 namespace proj0
 {
@@ -77,7 +74,7 @@ namespace proj0
             // For storing query results
             List<PersonModel> results = new List<PersonModel>();
             // Load contacts from file
-            ContactDataAccess.contacts = ContactDataIO.GetContacts();
+            MemDbAccess.contacts = FileDbAccess.GetContacts();
             while (true)
             {
                 Console.WriteLine($"\nPhone Directory" +
@@ -90,18 +87,18 @@ namespace proj0
                 selection = Console.ReadLine();
                 if (selection == "0")
                 {
-                    ContactDataIO.WriteContacts(ContactDataAccess.contacts);
+                    FileDbAccess.WriteContacts(MemDbAccess.contacts);
                     break;
                 }
                 else if (selection == "1")
                 {
-                    if (ContactDataAccess.contacts == null)
+                    if (MemDbAccess.contacts == null)
                     {
                         Console.WriteLine($"\nNo entries in Contacts.");
                     }
-                    else if (ContactDataAccess.contacts.Count > 0) {
-                        Console.WriteLine($"\n{ContactDataAccess.contacts.Count} Contacts\n");
-                        foreach (PersonModel p in ContactDataAccess.contacts)
+                    else if (MemDbAccess.contacts.Count > 0) {
+                        Console.WriteLine($"\n{MemDbAccess.contacts.Count} Contacts\n");
+                        foreach (PersonModel p in MemDbAccess.contacts)
                         {
                             Console.WriteLine(p.Print());
                         }
@@ -136,7 +133,7 @@ namespace proj0
 
                     try
                     {
-                        ContactDataAccess.Add(firstName: fn,
+                        MemDbAccess.Add(firstName: fn,
                                               lastName: ln,
                                               houseNum: houseNum,
                                               street: street,
@@ -151,7 +148,7 @@ namespace proj0
                     }
                     catch(Exception ex)
                     {
-                        Console.WriteLine($"\nFailed to add contact.\n");
+                        Console.WriteLine($"\nFailed to add contact.\n{ex.Message}");
                     }
                 }
                 else if (selection == "3")
@@ -179,7 +176,7 @@ namespace proj0
 
                     try
                     {
-                        ContactDataAccess.Update(firstName: fn,
+                        MemDbAccess.Update(firstName: fn,
                                               lastName: ln,
                                               houseNum: houseNum,
                                               street: street,
@@ -194,7 +191,7 @@ namespace proj0
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"\nFailed to update contact.\n");
+                        Console.WriteLine($"\nFailed to update contact.\n{ex.Message}");
                     }
                 }
                 else if (selection == "4")
@@ -205,20 +202,20 @@ namespace proj0
                     string ln = Console.ReadLine() ?? "";
                     try
                     {
-                        ContactDataAccess.Delete(firstName: fn,
+                        MemDbAccess.Delete(firstName: fn,
                                               lastName: ln);
                         Console.WriteLine($"\nContact successfully deleted.\n");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"\nFailed to update contact.\n");
+                        Console.WriteLine($"\nFailed to update contact.\n{ex.Message}");
                     }
                 }
                 else if (selection == "5")
                 {
                     Console.WriteLine($"Query string: ");
                     string query = Console.ReadLine() ?? "";
-                    results = ContactDataAccess.Search(query);
+                    results = MemDbAccess.Search(query);
 
                     if (results.Count > 0)
                     {

@@ -1,19 +1,19 @@
 ﻿using Xunit;
-using ContactLibrary;
 using Xunit.Abstractions;
 using System.Collections.Generic;
 using Models;
+using DataAccess;
 
 namespace xUnitTest
 {
 
-    public class ContactDataTest
+    public class Tests
     {
         private readonly ITestOutputHelper output;
         public static string testFileName = "test-contacts.dat";
         public static List<PersonModel> testContacts = new List<PersonModel>();
 
-        public ContactDataTest(ITestOutputHelper output)
+        public Tests(ITestOutputHelper output)
         {
             this.output = output;
         }
@@ -31,13 +31,13 @@ namespace xUnitTest
         string[] exts = { "001", "002", "003" };
 
         [Fact]
-        public void TestAddUpdateDeleteSearch()
+        public void TestAll()
         {
             //
             // Add three people to contacts
             for (int i = 0; i < firstnames.Length; i++)
             {
-                ContactDataAccess.Add(firstName: firstnames[i],
+                MemDbAccess.Add(firstName: firstnames[i],
                                       lastName: lastNames[i],
                                       houseNum: houseNums[i],
                                       street: streets[i],
@@ -52,15 +52,15 @@ namespace xUnitTest
 
             // Debug output for Add
             output.WriteLine($"Contacts after Add:");
-            foreach (PersonModel p in ContactDataAccess.contacts)
+            foreach (PersonModel p in MemDbAccess.contacts)
                 output.WriteLine(p.Print());
 
             // Assert 3 Person were added
-            Assert.Equal(3, ContactDataAccess.contacts.Count);
+            Assert.Equal(3, MemDbAccess.contacts.Count);
 
             //
             // Assert Edit Mike Powell
-            Assert.True(ContactDataAccess.Update(firstName: "Mike",
+            Assert.True(MemDbAccess.Update(firstName: "Mike",
                                           lastName: "Powell",
                                           houseNum: null,
                                           street: "999",
@@ -74,20 +74,20 @@ namespace xUnitTest
 
             // Debug output for Update
             output.WriteLine($"\nContacts after Update 'Mike Powell':");
-            foreach (PersonModel p in ContactDataAccess.contacts)
+            foreach (PersonModel p in MemDbAccess.contacts)
                 output.WriteLine(p.Print());
 
             //
             // Delete Kate Sanders from contacts
-            ContactDataAccess.Delete(firstName: "Kate", lastName: "Sanders");
+            MemDbAccess.Delete(firstName: "Kate", lastName: "Sanders");
 
             // Debug output for Delete
             output.WriteLine($"\nContacts after Deleting Kate Powell:");
-            foreach (PersonModel p in ContactDataAccess.contacts)
+            foreach (PersonModel p in MemDbAccess.contacts)
                 output.WriteLine(p.Print());
 
             // Assert Delete
-            Assert.Equal(2, ContactDataAccess.contacts.Count);
+            Assert.Equal(2, MemDbAccess.contacts.Count);
 
             //
             // Search Test
@@ -97,7 +97,7 @@ namespace xUnitTest
             foreach (string q in queries)
             {
                 // Search for query string
-                results = ContactDataAccess.Search(q);
+                results = MemDbAccess.Search(q);
                 // Debug output for Query
                 output.WriteLine($"\nSearch results with query '{q}':");
                 foreach (PersonModel p in results)
@@ -108,14 +108,14 @@ namespace xUnitTest
 
             //
             // Serialization Test
-            string json = ContactDataIO.PersonModelListToJSON(ContactDataAccess.contacts);
-            testContacts = ContactDataIO.JSONToPersonModelList(json);
+            string json = FileDbAccess.PersonModelListToJSON(MemDbAccess.contacts);
+            testContacts = FileDbAccess.JSONToPersonModelList(json);
 
             // Compare List<Person>s
             string listAsStringPreConversions = "", listAsStringPostConversions = "";
             for (int i = 0; i < testContacts.Count; i++)
             {
-                listAsStringPreConversions += ContactDataAccess.contacts[i].Print();
+                listAsStringPreConversions += MemDbAccess.contacts[i].Print();
                 listAsStringPostConversions += testContacts[i].Print();
             }
 
@@ -129,11 +129,11 @@ namespace xUnitTest
 
             //
             // File IO Test
-            bool writeTest = ContactDataIO.WriteContacts(ContactDataAccess.contacts, testFileName);
-            testContacts = ContactDataIO.GetContacts(testFileName);
+            bool writeTest = FileDbAccess.WriteContacts(MemDbAccess.contacts, testFileName);
+            testContacts = FileDbAccess.GetContacts(testFileName);
 
             output.WriteLine($"ContactDataAccess.contacts:");
-            foreach (PersonModel p in ContactDataAccess.contacts)
+            foreach (PersonModel p in MemDbAccess.contacts)
             {
                 output.WriteLine(p.Print());
             }
@@ -148,7 +148,7 @@ namespace xUnitTest
             listAsStringPreConversions = listAsStringPostConversions = "";
             for (int i = 0; i < testContacts.Count; i++)
             {
-                listAsStringPreConversions += ContactDataAccess.contacts[i].Print();
+                listAsStringPreConversions += MemDbAccess.contacts[i].Print();
                 listAsStringPostConversions += testContacts[i].Print();
             }
             output.WriteLine($"\nFile IO Test");

@@ -8,8 +8,7 @@
     ".NETCoreApp,Version=v2.0": {
       "proj0/1.0.0": {
         "dependencies": {
-          "ContactLibrary": "1.0.0",
-          "DataAccessADOSQL": "1.0.0",
+          "DataAccess": "1.0.0",
           "Models": "1.0.0",
           "NLog": "4.5.6",
           "NLog.Config": "4.5.6",
@@ -213,21 +212,12 @@
           "lib/netstandard1.1/xunit.execution.dotnet.dll": {}
         }
       },
-      "ContactLibrary/1.0.0": {
-        "dependencies": {
-          "DataAccessADOSQL": "1.0.0",
-          "Models": "1.0.0"
-        },
-        "runtime": {
-          "ContactLibrary.dll": {}
-        }
-      },
-      "DataAccessADOSQL/1.0.0": {
+      "DataAccess/1.0.0": {
         "dependencies": {
           "Models": "1.0.0"
         },
         "runtime": {
-          "DataAccessADOSQL.dll": {}
+          "DataAccess.dll": {}
         }
       },
       "Models/1.0.0": {
@@ -407,12 +397,7 @@
       "path": "xunit.extensibility.execution/2.3.1",
       "hashPath": "xunit.extensibility.execution.2.3.1.nupkg.sha512"
     },
-    "ContactLibrary/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "DataAccessADOSQL/1.0.0": {
+    "DataAccess/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

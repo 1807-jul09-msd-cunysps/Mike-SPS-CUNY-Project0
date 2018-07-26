@@ -492,29 +492,16 @@
           "lib/netstandard1.1/xunit.execution.dotnet.dll": {}
         }
       },
-      "ContactLibrary/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "DataAccessADOSQL": "1.0.0",
-          "Models": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/ContactLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ContactLibrary.dll": {}
-        }
-      },
-      "DataAccessADOSQL/1.0.0": {
+      "DataAccess/1.0.0": {
         "type": "project",
         "dependencies": {
           "Models": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/DataAccessADOSQL.dll": {}
+          "bin/placeholder/DataAccess.dll": {}
         },
         "runtime": {
-          "bin/placeholder/DataAccessADOSQL.dll": {}
+          "bin/placeholder/DataAccess.dll": {}
         }
       },
       "Models/1.0.0": {
@@ -1529,15 +1516,10 @@
         "xunit.extensibility.execution.nuspec"
       ]
     },
-    "ContactLibrary/1.0.0": {
+    "DataAccess/1.0.0": {
       "type": "project",
-      "path": "../ContactLibrary/ContactLibrary.csproj",
-      "msbuildProject": "../ContactLibrary/ContactLibrary.csproj"
-    },
-    "DataAccessADOSQL/1.0.0": {
-      "type": "project",
-      "path": "../DataAccess/DataAccessADOSQL.csproj",
-      "msbuildProject": "../DataAccess/DataAccessADOSQL.csproj"
+      "path": "../DataAccess/DataAccess.csproj",
+      "msbuildProject": "../DataAccess/DataAccess.csproj"
     },
     "Models/1.0.0": {
       "type": "project",
@@ -1547,8 +1529,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "ContactLibrary >= 1.0.0",
-      "DataAccessADOSQL >= 1.0.0",
+      "DataAccess >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
       "Models >= 1.0.0",
       "NLog >= 4.5.6",
@@ -1588,11 +1569,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\ContactLibrary\\ContactLibrary.csproj": {
-              "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\ContactLibrary\\ContactLibrary.csproj"
-            },
-            "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\DataAccess\\DataAccessADOSQL.csproj": {
-              "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\DataAccess\\DataAccessADOSQL.csproj"
+            "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\DataAccess\\DataAccess.csproj"
             },
             "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\Models\\Models.csproj": {
               "projectPath": "C:\\Users\\Mike\\Desktop\\Revature\\Mike-SPS-CUNY-Project0\\Models\\Models.csproj"
