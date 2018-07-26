@@ -54,12 +54,14 @@ namespace ContactLibrary
                 person.Address = addr;
                 person.Phone = phone;
 
-
-                // Update SQL Server
-                DBAccess.Add(person);
-
                 // Add new person to contact list
                 contacts.Add(person);
+
+                // Update SQL Server
+                Pid = DBAccess.Add(person);
+                person.Id = Pid;
+                phone.PersonId = Pid;
+                addr.PersonId = Pid;
 
                 return true;
             }
