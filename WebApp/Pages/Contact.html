@@ -47,11 +47,11 @@
                 <!-- Row for: First Name, Last Name -->
                 <div class="row custom-new-row-group">
                     <div class="placeholder col-sm-1"></div>
-                    <label for="inputFirstName" class="col-form-label col-sm-2 text-center">First Name</label>
+                    <label for="inputFirstName" class="col-form-label col-sm-2 text-right">First Name</label>
                     <div class="col-sm-3">
                         <input type="text" class="form-control text-center" id="inputFirstName" placeholder="First Name">
                     </div>
-                    <label for="inputLastName" class="col-form-label col-sm-2 text-center">Last Name</label>
+                    <label for="inputLastName" class="col-form-label col-sm-2 text-right">Last Name</label>
                     <div class="col-sm-3">
                         <input type="text" class="form-control text-center" id="inputLastName" placeholder="Last Name">
                     </div>
@@ -59,12 +59,12 @@
                 <!-- Row for: Age, Gender -->
                 <div class="row custom-new-row-group">
                     <div class="placeholder col-sm-1"></div>
-                    <label for="inputAge" class="text-center col-sm-2 col-form-label">Age</label>
+                    <label for="inputAge" class="text-right col-sm-2 col-form-label">Age</label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control text-center" id="inputAge" placeholder="Age">
                     </div>
                     <div class="placeholder col-sm-1"></div>
-                    <label for="inputGender" class="text-center col-sm-2 col-form-label">Gender</label>
+                    <label for="inputGender" class="text-right col-sm-2 col-form-label">Gender</label>
                     <div class="col-sm-2">
                         <select id="inputGender" class="form-control">
                             <option value="Select">Select</option>
@@ -76,17 +76,17 @@
             </fieldset>
 
             <!-- Address Info -->
-            <fieldset class="form-group text-left custom-new-input-section">
+            <fieldset class="form-group text-center custom-new-input-section">
                 <h4>Address Info</h4>
                 <hr />
                 <!-- Row for: Address Line 1, Address Line 2 -->
                 <div class="row custom-new-row-group">
                     <div class="placeholder col-sm-1"></div>
-                    <label for="inputAddr1" class="col-sm-2 col-form-label text-left">Address Line 1</label>
+                    <label for="inputAddr1" class="col-sm-2 col-form-label text-right">Address Line 1</label>
                     <div class="col-sm-3">
                         <input type="text" class="form-control text-left" id="inputAddr1" placeholder="House number and street">
                     </div>
-                    <label for="inputAddr2" class="col-sm-2 col-form-label text-left">Address Line 2</label>
+                    <label for="inputAddr2" class="col-sm-2 col-form-label text-right">Address Line 2</label>
                     <div class="col-sm-3">
                         <input type="text" class="form-control text-left" id="inputAddr2" placeholder="Apartment or Suite">
                     </div>
@@ -94,12 +94,12 @@
                 <!-- Row for: Zip Code and City -->
                 <div class="row custom-new-row-group">
                     <div class="placeholder col-sm-1"></div>
-                    <label for="inputZipcode" class="col-sm-2 col-form-label text-left">Zip Code</label>
+                    <label for="inputZipcode" class="col-sm-2 col-form-label text-right">Zip Code</label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control text-left" id="inputZipcode" placeholder="Zip Code">
                     </div>
                     <div class="placeholder col-sm-1"></div>
-                    <label for="inputCity" class="text-left col-sm-2 col-form-label">City</label>
+                    <label for="inputCity" class="text-right col-sm-2 col-form-label">City</label>
                     <div class="col-sm-3">
                         <input type="text" class="form-control text-left" id="inputCity" placeholder="City">
                     </div>
@@ -107,12 +107,12 @@
                 <!-- Row for: State and Country -->
                 <div class="row custom-new-row-group">
                     <div class="placeholder col-sm-1"></div>
-                    <label for="inputState" class="text-left col-sm-2 col-form-label">State</label>
+                    <label for="inputState" class="text-right col-sm-2 col-form-label">State</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control text-left" id="inputState" placeholder="State">
+                        <input type="text" class="form-control text-right" id="inputState" placeholder="State">
                     </div>
                     <div class="placeholder col-sm-1"></div>
-                    <label for="inputCountry" class="text-left col-sm-2 col-form-label">Country</label>
+                    <label for="inputCountry" class="text-right col-sm-2 col-form-label">Country</label>
                     <div class="col-sm-3">
                         <!-- .value returns acronym, .innerText returns full country name-->
                         <div id="inputCountry" class="bfh-selectbox bfh-countries" data-country="US" data-flags="true"></div>
@@ -134,7 +134,7 @@
             </fieldset>
 
             <!-- Primary Address Info -->
-            <fieldset id="primaryAddr" class="form-group text-left custom-new-input-section">
+            <fieldset id="primaryAddr" class="form-group text-center custom-new-input-section">
                 <h4>Primary Address Info</h4>
                 <hr />
                 <!-- Row for: Address Line 1, Address Line 2 -->
@@ -182,7 +182,7 @@
                 <!-- Row for: Phone, Extension, and Email -->
                 <div class="row custom-new-row-group">
                     <div class="placeholder col-sm-1"></div>
-                    <label for="inputPhone" class="col-sm-2 col-form-label text-center">Phone Number</label>
+                    <label for="inputPhone" class="col-sm-2 col-form-label text-right">Phone Number</label>
                     <div class="col-sm-2">
                         <input type="text" class="input-medium bfh-phone form-control" data-format="(ddd) ddd-dddd" id="inputPhoneNum">
                         <script>$("#inputPhoneNum").intlTelInput();</script>
@@ -190,7 +190,7 @@
                     <div class="col-sm-1">
                         <input type="text" class="form-control text-center" id="inputPhoneExt" placeholder="Ext.">
                     </div>
-                    <label for="inputEmail" class="text-center col-sm-2 col-form-label text-center">E-Mail</label>
+                    <label for="inputEmail" class="col-sm-2 col-form-label text-right">E-Mail</label>
                     <div class="col-sm-3">
                         <input type="email" class="form-control text-center" id="inputEmail" placeholder="E-Mail Address">
                     </div>
