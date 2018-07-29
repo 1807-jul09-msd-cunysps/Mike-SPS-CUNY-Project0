@@ -23,6 +23,7 @@
 </head>
 <body>
     <div id="myContent" class="container-fluid" style="width:70%;">
+        <!-- Header -->
         <header id="header" class="flex-sm-row">
             <h1 id="banner" class="jumbotron jumbotron-fluid flex-sm-row text-center" style="margin-bottom:0; padding-bottom:4%; border-bottom: 3px solid black">Michael Corso</h1>
             <nav class="navbar sticky-top navbar-dark bg-dark jumbotron flex-sm-row" style="padding-top:3%; padding-bottom:3%;">
@@ -36,36 +37,34 @@
                 </div>
             </nav>
         </header>
+        <!-- Content -->
         <!-- Form -->
         <form>
             <!-- Personal Info -->
             <fieldset class="form-group text-center custom-new-input-section">
-                <h3>Personal Info</h3>
+                <h4>Personal Info</h4>
                 <hr />
-                <!-- Input Row for: First Name, Last Name, Age, Gender-->
+                <!-- Row for: First Name, Last Name -->
                 <div class="row custom-new-row-group">
-                    <div class="placeholder col-sm-3"></div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputFirstName" class="col-form-label col-sm-2 text-center">First Name</label>
                     <div class="col-sm-3">
                         <input type="text" class="form-control text-center" id="inputFirstName" placeholder="First Name">
                     </div>
+                    <label for="inputLastName" class="col-form-label col-sm-2 text-center">Last Name</label>
                     <div class="col-sm-3">
                         <input type="text" class="form-control text-center" id="inputLastName" placeholder="Last Name">
                     </div>
-                    <div class="placeholder col-sm-3"></div>
                 </div>
-                <!-- Label Row for: First Name, Last Name, Age, Gender-->
-                <div class="row">
-                    <div class="placeholder col-sm-3"></div>
-                    <label for="inputFirstName" class="col-form-label col-sm-3 text-center">First Name</label>
-                    <label for="inputLastName" class="col-form-label col-sm-3 text-center">Last Name</label>
-                    <div class="placeholder col-sm-3"></div>
-                </div>
-                <!-- Input Row for: First Name, Last Name, Age, Gender-->
+                <!-- Row for: Age, Gender -->
                 <div class="row custom-new-row-group">
-                    <div class="placeholder col-sm-4"></div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputAge" class="text-center col-sm-2 col-form-label">Age</label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control text-center" id="inputAge" placeholder="Age">
                     </div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputGender" class="text-center col-sm-2 col-form-label">Gender</label>
                     <div class="col-sm-2">
                         <select id="inputGender" class="form-control">
                             <option value="Select">Select</option>
@@ -73,71 +72,56 @@
                             <option value="Male">Male</option>
                         </select>
                     </div>
-                    <div class="placeholder col-sm-1"></div>
-                </div>
-                <!-- Label Row for: First Name, Last Name, Age, Gender-->
-                <div class="row">
-                    <div class="placeholder col-sm-4"></div>
-                    <label for="inputAge" class="text-center col-sm-2 col-form-label">Age</label>
-                    <label for="inputGender" class="text-center col-sm-2 col-form-label">Gender</label>
-                    <div class="placeholder col-sm-1"></div>
                 </div>
             </fieldset>
 
             <!-- Address Info -->
-            <fieldset class="form-group text-center custom-new-input-section">
-                <h3>Address Info</h3>
+            <fieldset class="form-group text-left custom-new-input-section">
+                <h4>Address Info</h4>
                 <hr />
-                <!-- Input Row for: Address Line 1, Address Line 2, and Zip Code-->
+                <!-- Row for: Address Line 1, Address Line 2 -->
                 <div class="row custom-new-row-group">
-                    <div class="placeholder col-sm-2"></div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputAddr1" class="col-sm-2 col-form-label text-left">Address Line 1</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control text-center" id="inputAddr1" placeholder="House number and street">
+                        <input type="text" class="form-control text-left" id="inputAddr1" placeholder="House number and street">
                     </div>
+                    <label for="inputAddr2" class="col-sm-2 col-form-label text-left">Address Line 2</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control text-center" id="inputAddr2" placeholder="Apartment or Suite">
+                        <input type="text" class="form-control text-left" id="inputAddr2" placeholder="Apartment or Suite">
                     </div>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control text-center" id="inputZipcode" placeholder="Zip Code">
-                    </div>
-                    <div class="placeholder col-sm-2"></div>
                 </div>
-                <!-- Label Row for: Address Line 1, Address Line 2, and Zip Code-->
-                <div class="row">
-                    <div class="placeholder col-sm-2"></div>
-                    <label for="inputAddr1" class="col-sm-3 col-form-label text-center">Address Line 1</label>
-                    <label for="inputAddr2" class="col-sm-3 col-form-label text-center">Address Line 2</label>
-                    <label for="inputZipcode" class="col-sm-2 col-form-label text-center">Zip Code</label>
-                    <div class="placeholder col-sm-2"></div>
-                </div>
-
-                <!-- Input Row for: City, State, Country -->
+                <!-- Row for: Zip Code and City -->
                 <div class="row custom-new-row-group">
-                    <div class="placeholder col-sm-2"></div>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control text-center" id="inputCity" placeholder="City">
-                    </div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputZipcode" class="col-sm-2 col-form-label text-left">Zip Code</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control text-center" id="inputState" placeholder="State">
+                        <input type="text" class="form-control text-left" id="inputZipcode" placeholder="Zip Code">
                     </div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputCity" class="text-left col-sm-2 col-form-label">City</label>
                     <div class="col-sm-3">
-                        <select class="form-control bfh-countries text-center" id="inputCountry" data-country="US"></select>
+                        <input type="text" class="form-control text-left" id="inputCity" placeholder="City">
                     </div>
-                    <div class="placeholder col-sm-2"></div>
                 </div>
-                <!-- Label Row for: City, State, Country -->
-                <div class="row">
-                    <div class="placeholder col-sm-2"></div>
-                    <label for="inputCity" class="text-center col-sm-3 col-form-label">City</label>
-                    <label for="inputState" class="text-center col-sm-2 col-form-label">State</label>
-                    <label for="inputCountry" class="text-center col-sm-3 col-form-label">Country</label>
-                    <div class="placeholder col-sm-2"></div>
+                <!-- Row for: State and Country -->
+                <div class="row custom-new-row-group">
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputState" class="text-left col-sm-2 col-form-label">State</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control text-left" id="inputState" placeholder="State">
+                    </div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputCountry" class="text-left col-sm-2 col-form-label">Country</label>
+                    <div class="col-sm-3">
+                        <!-- .value returns acronym, .innerText returns full country name-->
+                        <div id="inputCountry" class="bfh-selectbox bfh-countries" data-country="US" data-flags="true"></div>
+                    </div>
                 </div>
-
                 <!-- Select for Primary Address -->
                 <div class="row custom-new-input-section">
                     <div class="placeholder col-sm-3"></div>
-                    <label for="isPrimAddr" class="text-center col-sm-3 col-form-label">Is this your primary address?</label>
+                    <label for="isPrimAddr" class="text-left col-sm-3 col-form-label">Is this your primary address?</label>
                     <div class="form-check col-sm-2">
                         <select id="isPrimAddr" class="form-control" onchange="togglePrimAddr()">
                             <option value="Select">Select</option>
@@ -150,83 +134,66 @@
             </fieldset>
 
             <!-- Primary Address Info -->
-            <fieldset id="primaryAddr" class="form-group text-center custom-new-input-section">
-                <h3>Primary Address Info</h3>
+            <fieldset id="primaryAddr" class="form-group text-left custom-new-input-section">
+                <h4>Primary Address Info</h4>
                 <hr />
-                <!-- Input Row for: Address Line 1, Address Line 2, and Zip Code-->
-                <div class="row custom-new-input-section">
-                    <div class="placeholder col-sm-2"></div>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control text-center" id="inputPrimAddr1" placeholder="House number and street">
-                    </div>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control text-center" id="inputPrimAddr2" placeholder="Apartment or Suite">
-                    </div>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control text-center" id="inputPrimZipcode" placeholder="Zip Code">
-                    </div>
-                    <div class="placeholder col-sm-2"></div>
-                </div>
-                <!-- Label Row for: Address Line 1, Address Line 2, and Zip Code-->
-                <div class="row">
-                    <div class="placeholder col-sm-2"></div>
-                    <label for="inputPrimAddr1" class="col-sm-3 col-form-label text-center">Address Line 1</label>
-                    <label for="inputPrimAddr2" class="col-sm-3 col-form-label text-center">Address Line 2</label>
-                    <label for="inputPrimZipcode" class="col-sm-2 col-form-label text-center">Zip Code</label>
-                    <div class="placeholder col-sm-2"></div>
-                </div>
-
-                <!-- Input Row for: City, State, Country -->
+                <!-- Row for: Address Line 1, Address Line 2 -->
                 <div class="row custom-new-row-group">
-                    <div class="placeholder col-sm-2"></div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputPrimAddr1" class="col-sm-2 col-form-label text-right">Address Line 1</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control text-center" id="inputPrimCity" placeholder="City">
+                        <input type="text" class="form-control text-left" id="inputPrimAddr1" placeholder="House number and street">
                     </div>
+                    <label for="inputPrimAddr2" class="col-sm-2 col-form-label text-right">Address Line 2</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control text-left" id="inputPrimAddr2" placeholder="Apartment or Suite">
+                    </div>
+                </div>
+                <!-- Row for: Zip Code and City -->
+                <div class="row custom-new-row-group">
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputPrimZipcode" class="col-sm-2 col-form-label text-right">Zip Code</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control text-center" id="inputPrimState" placeholder="State">
+                        <input type="text" class="form-control text-left" id="inputPrimZipcode" placeholder="Zip Code">
                     </div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputPrimCity" class="text-right col-sm-2 col-form-label">City</label>
                     <div class="col-sm-3">
-                        <select class="form-control bfh-countries text-center" id="inputPrimCountry" data-country="US"></select>
+                        <input type="text" class="form-control text-left" id="inputPrimCity" placeholder="City">
                     </div>
-                    <div class="placeholder col-sm-2"></div>
                 </div>
-                <!-- Label Row for: City, State, Country -->
-                <div class="row">
-                    <div class="placeholder col-sm-2"></div>
-                    <label for="inputPrimCity" class="text-center col-sm-3 col-form-label">City</label>
-                    <label for="inputPrimState" class="text-center col-sm-2 col-form-label">State</label>
-                    <label for="inputPrimCountry" class="text-center col-sm-3 col-form-label">Country</label>
-                    <div class="placeholder col-sm-2"></div>
+                <!-- Row for: State and Country -->
+                <div class="row custom-new-row-group">
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputPrimState" class="text-right col-sm-2 col-form-label">State</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control text-left" id="inputPrimState" placeholder="State">
+                    </div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputPrimCountry" class="text-right col-sm-2 col-form-label">Country</label>
+                    <div class="col-sm-3">
+                        <div id="inputPrimCountry" class="bfh-selectbox bfh-countries" data-country="US" data-flags="true"></div>
+                    </div>
                 </div>
-
             </fieldset>
-
             <!-- Contact Info -->
             <fieldset class="form-group text-center custom-new-input-section">
-                <h3>Contact Info</h3>
-                <hr />
-                <!-- Input Row for: Phone Number, Phone Extension Number, E-Mail -->
+                <h4>Contact Info</h4> <hr />
+                <!-- Row for: Phone, Extension, and Email -->
                 <div class="row custom-new-row-group">
-                    <div class="placeholder col-sm-2"></div>
-                    <div class="col-sm-3">
-                        <input type="text" class="input-medium bfh-phone form-control" data-format="(ddd) ddd-dddd" id="inputPhoneNum">
-                        <script>$("#inputCountryCode").intlTelInput();</script>
-                    </div>
+                    <div class="placeholder col-sm-1"></div>
+                    <label for="inputPhone" class="col-sm-2 col-form-label text-center">Phone Number</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control text-center" id="inputPhoneExt" placeholder="Phone Ext.">
+                        <input type="text" class="input-medium bfh-phone form-control" data-format="(ddd) ddd-dddd" id="inputPhoneNum">
+                        <script>$("#inputPhoneNum").intlTelInput();</script>
                     </div>
+                    <div class="col-sm-1">
+                        <input type="text" class="form-control text-center" id="inputPhoneExt" placeholder="Ext.">
+                    </div>
+                    <label for="inputEmail" class="text-center col-sm-2 col-form-label text-center">E-Mail</label>
                     <div class="col-sm-3">
                         <input type="email" class="form-control text-center" id="inputEmail" placeholder="E-Mail Address">
                     </div>
-                    <div class="placeholder col-sm-2"></div>
-                </div>
-                <!-- Label Row for: Phone Number, Phone Extension Number, E-Mail -->
-                <div class="row">
-                    <div class="placeholder col-sm-2"></div>
-                    <label for="inputPhone" class="col-sm-3 col-form-label text-center">Phone Number</label>
-                    <label for="inputExt" class="col-sm-2 col-form-label text-center">Phone Ext.</label>
-                    <label for="inputEmail" class="text-center col-sm-3 col-form-label text-center">E-Mail Address</label>
-                    <div class="placeholder col-sm-2"></div>
                 </div>
             </fieldset>
 
@@ -240,9 +207,10 @@
                 <div class="placeholder col-sm-5"></div>
             </div>
         </form>
+        <!-- Footer -->
         <footer id="footer" class="flex-sm-row text-center">
             <hr />
-            <h4>&copy; Michael Corso - 2018</h4>
+            <h5>&copy; Michael Corso - 2018</h5>
             <hr />
         </footer>
     </div>
