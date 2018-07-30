@@ -9,18 +9,18 @@ body {
     margin: 0 auto;
 }
 
-h1, h2 {
+h1, h2, h3, h4 {
     font-family: 'Faster One', cursive;
 }
 
 /* header styles */
 
-h1 {
+h3 {
     font-size: 4rem;
     text-align: center;
 }
 
-header p {
+header p td tr table {
     font-size: 1.3rem;
     font-weight: bold;
     text-align: center;
