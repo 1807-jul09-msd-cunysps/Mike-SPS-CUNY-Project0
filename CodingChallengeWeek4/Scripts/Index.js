@@ -24,7 +24,7 @@ function populateHeader(data) {
     h3.textContent = "Super Hero Squad";
 
     let teamInfo = document.createElement('p');
-    teamInfo.textContent = "Hometown: " + data.homeTown + "//" + data.formed;
+    teamInfo.textContent = "Hometown: " + data.homeTown + " // Formed: " + data.formed;
 
     header.appendChild(h3);
     header.appendChild(teamInfo);

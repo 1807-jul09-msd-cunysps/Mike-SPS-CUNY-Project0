@@ -7,14 +7,13 @@ using DataAccess;
 namespace xUnitTest
 {
 
-    public class Tests
+    public class DataAccessTests
     {
-        /*
         private readonly ITestOutputHelper output;
         public static string testFileName = "test-contacts.dat";
         public static List<PersonModel> testContacts = new List<PersonModel>();
 
-        public Tests(ITestOutputHelper output)
+        public DataAccessTests(ITestOutputHelper output)
         {
             this.output = output;
         }
@@ -32,7 +31,7 @@ namespace xUnitTest
         string[] exts = { "001", "002", "003" };
 
         [Fact]
-        public void TestAll()
+        public void TestAdd()
         {
             //
             // Add three people to contacts
@@ -58,8 +57,11 @@ namespace xUnitTest
 
             // Assert 3 Person were added
             Assert.Equal(3, MemDbAccess.contacts.Count);
+        }
 
-            //
+        [Fact]
+        public void TestEdit()
+        {
             // Assert Edit Mike Powell
             Assert.True(MemDbAccess.Update(firstName: "Mike",
                                           lastName: "Powell",
@@ -77,7 +79,32 @@ namespace xUnitTest
             output.WriteLine($"\nContacts after Update 'Mike Powell':");
             foreach (PersonModel p in MemDbAccess.contacts)
                 output.WriteLine(p.Print());
+        }
+        //[Theory]
+        //[InlineData("Mike")]    // first name
+        //[InlineData("Smith")]   // last name
+        //[InlineData("Miami")]   // city
+        //[InlineData("43564")]   // zip
+        //[InlineData("6948747")] // phone number
+        //public void TestSearch(string query)
+        //{
+        //    //
+        //    // Search Test
+        //    List<PersonModel> results = new List<PersonModel>();
+        //    // Search for query string
+        //    results = MemDbAccess.Search(query);
+        //    // Debug output for Query
 
+        //    output.WriteLine($"\nSearch results with query '{query}':");
+        //    foreach (PersonModel p in results)
+        //        output.WriteLine(p.Print());
+        //    // Assert
+        //    Assert.True(results.Count >= 1);
+        //}
+
+        [Fact]
+        public void TestDelete()
+        {
             //
             // Delete Kate Sanders from contacts
             MemDbAccess.Delete(firstName: "Kate", lastName: "Sanders");
@@ -89,24 +116,11 @@ namespace xUnitTest
 
             // Assert Delete
             Assert.Equal(2, MemDbAccess.contacts.Count);
+        }
 
-            //
-            // Search Test
-            List<PersonModel> results = new List<PersonModel>();
-            // Queries to test first name, last name, city, zip code, and phone number
-            string[] queries = new string[] { "Mike", "Smith", "Miami", "43564", "6948747" };
-            foreach (string q in queries)
-            {
-                // Search for query string
-                results = MemDbAccess.Search(q);
-                // Debug output for Query
-                output.WriteLine($"\nSearch results with query '{q}':");
-                foreach (PersonModel p in results)
-                    output.WriteLine(p.Print());
-                // Assert one return
-                Assert.Single(results);
-            }
-
+        [Fact]
+        public void TestSerialization()
+        {
             //
             // Serialization Test
             string json = FileDbAccess.PersonModelListToJSON(MemDbAccess.contacts);
@@ -127,7 +141,11 @@ namespace xUnitTest
 
             // Serialization Assert
             Assert.True(listAsStringPreConversions == listAsStringPostConversions);
+        }
 
+        [Fact]
+        public void TestFileIO()
+        { 
             //
             // File IO Test
             bool writeTest = FileDbAccess.WriteContacts(MemDbAccess.contacts, testFileName);
@@ -146,7 +164,7 @@ namespace xUnitTest
             }
 
             // Compare List<Person>s
-            listAsStringPreConversions = listAsStringPostConversions = "";
+            string listAsStringPreConversions = "", listAsStringPostConversions = "";
             for (int i = 0; i < testContacts.Count; i++)
             {
                 listAsStringPreConversions += MemDbAccess.contacts[i].Print();
@@ -158,6 +176,6 @@ namespace xUnitTest
 
             // File IO Assert
             Assert.True(listAsStringPreConversions == listAsStringPostConversions);
-        }*/
+        }
     }
 }
