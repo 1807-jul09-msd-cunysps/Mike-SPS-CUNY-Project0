@@ -31,8 +31,6 @@
                     <a class="btn btn-primary btn-dark" href="Home.html">Home</a>
                     <a class="btn btn-dark btn-primary" href="About.html">About Me</a>
                     <a class="btn btn-dark btn-primary" href="Contact.html">Contact Me</a>
-                </div>
-                <div id="userButtons" class="btn-group-sm">
                     <a class="btn btn-dark btn-primary" href="Register.html" style="float:right;">Register</a>
                 </div>
             </nav>
@@ -49,11 +47,11 @@
                     <div class="placeholder col-sm-1"></div>
                     <label for="inputFirstName" class="col-form-label col-sm-2 text-right">First Name</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control text-center" id="inputFirstName" placeholder="First Name">
+                        <input type="text" class="form-control text-left" id="inputFirstName" placeholder="First Name">
                     </div>
                     <label for="inputLastName" class="col-form-label col-sm-2 text-right">Last Name</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control text-center" id="inputLastName" placeholder="Last Name">
+                        <input type="text" class="form-control text-left" id="inputLastName" placeholder="Last Name">
                     </div>
                 </div>
                 <!-- Row for: Age, Gender -->
@@ -61,7 +59,7 @@
                     <div class="placeholder col-sm-1"></div>
                     <label for="inputAge" class="text-right col-sm-2 col-form-label">Age</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control text-center" id="inputAge" placeholder="Age">
+                        <input type="text" class="form-control text-left" id="inputAge" placeholder="Age">
                     </div>
                     <div class="placeholder col-sm-1"></div>
                     <label for="inputGender" class="text-right col-sm-2 col-form-label">Gender</label>
@@ -109,13 +107,13 @@
                     <div class="placeholder col-sm-1"></div>
                     <label for="inputState" class="text-right col-sm-2 col-form-label">State</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control text-right" id="inputState" placeholder="State">
+                        <input type="text" class="form-control text-left" id="inputState" placeholder="State">
                     </div>
                     <div class="placeholder col-sm-1"></div>
                     <label for="inputCountry" class="text-right col-sm-2 col-form-label">Country</label>
                     <div class="col-sm-3">
                         <!-- .value returns acronym, .innerText returns full country name-->
-                        <div id="inputCountry" class="bfh-selectbox bfh-countries" data-country="US" data-flags="true"></div>
+                        <div id="inputCountry" class="text-left bfh-selectbox bfh-countries" data-country="US" data-flags="true"></div>
                     </div>
                 </div>
                 <!-- Select for Primary Address -->
@@ -188,11 +186,11 @@
                         <script>$("#inputPhoneNum").intlTelInput();</script>
                     </div>
                     <div class="col-sm-1">
-                        <input type="text" class="form-control text-center" id="inputPhoneExt" placeholder="Ext.">
+                        <input type="text" class="form-control text-left" id="inputPhoneExt" placeholder="Ext.">
                     </div>
                     <label for="inputEmail" class="col-sm-2 col-form-label text-right">E-Mail</label>
                     <div class="col-sm-3">
-                        <input type="email" class="form-control text-center" id="inputEmail" placeholder="E-Mail Address">
+                        <input type="email" class="form-control text-left" id="inputEmail" placeholder="E-Mail Address">
                     </div>
                 </div>
             </fieldset>
