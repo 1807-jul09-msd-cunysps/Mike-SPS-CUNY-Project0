@@ -1,11 +1,9 @@
-﻿var data;
-
-// On load
+﻿// On load
 window.onload = function () {
     getHeroes();
 };
 
-// Populate page
+// Populate using AJAZ
 function getHeroes() {
     var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
     var request = new XMLHttpRequest();
@@ -13,91 +11,54 @@ function getHeroes() {
     request.responseType = 'json';
     request.send();
     request.onload = function () {
-        data = request.response;
-        populateHeader();
-        showHeroes();
+        let data = request.response;
+        populateHeader(data);
+        showHeroes(data);
     }
 }
 
-function populateHeader(heroes) {
+function populateHeader(data) {
     let header = document.querySelector("header");
 
     let h3 = document.createElement('h3');
-    h3.setAttribute("id", "squadTitle");
-    h3.innerText = "Super Hero Squad";
+    h3.textContent = "Super Hero Squad";
 
-    let h4 = document.createElement('h4');
-    h4.setAttribute("id", "heroInfo");
-    h4.innerText = data.homeTown + "//" + data.formed;
+    let teamInfo = document.createElement('p');
+    teamInfo.textContent = "Hometown: " + data.homeTown + "//" + data.formed;
 
     header.appendChild(h3);
-    header.appendChild(h4);
+    header.appendChild(teamInfo);
 }
 
-function showHeroes(heroes) {
+function showHeroes(data) {
     var section = document.querySelector("section");
 
-    let table = document.createElement('table');
-    table.setAttribute("width", "100%");
-    table.setAttribute("border", "2");
-
-    // Header
-    let headerRow = document.createElement('tr');
-    headerRow.setAttribute("width", "100%");
-
     for (hero in data.members) {
-        let td = document.createElement('td');
-        td.innerText = data.members[hero].name;
-        td.setAttribute("width", "33%");
-        headerRow.appendChild(td);
-    }
-    table.appendChild(headerRow);
+        var article = document.createElement('article');
 
-    // Identity
-    let idRow = document.createElement('tr');
-    idRow.setAttribute("width", "100%");
+        var name = document.createElement('h2');
+        var identity = document.createElement('p');
+        var age = document.createElement('p');
+        var powers = document.createElement('p');
+        var powerList = document.createElement('ul');
 
-    for (hero in data.members) {
-        let td = document.createElement('td');
-        td.innerText = "Secret identity: " + data.members[hero].secretIdentity;
-        td.setAttribute("width", "33%");
-        idRow.appendChild(td);
-    }
-    table.appendChild(idRow);
+        name.textContent = data.members[hero].name;
+        identity.textContent = 'Identity: ' + data.members[hero].secretIdentity;
+        age.textContent = 'Age: ' + data.members[hero].age;
+        powers.textContent = 'Powers: ';
 
-    // Age
-    let ageRow = document.createElement('tr');
-    ageRow.setAttribute("width", "100%");
-
-    for (hero in data.members) {
-        let td = document.createElement('td');
-        td.innerText = "Age: " + data.members[hero].age;
-        td.setAttribute("width", "33%");
-        ageRow.appendChild(td);
-    }
-    table.appendChild(ageRow);
-
-    // Powers
-    let powersRow = document.createElement('tr');
-    powersRow.setAttribute("width", "100%");
-    table.setAttribute("text-align", "center");
-
-    for (hero in data.members) {
-        let td = document.createElement('td');
-        td.innerText = "Super powers:";
-        td.setAttribute("width", "33%");
-        // power list
-        let list = document.createElement('ul');
         for (power in data.members[hero].powers) {
             let item = document.createElement('li');
-            item.innerText = data.members[hero].powers[power];
-            list.appendChild(item);
+            item.textContent = data.members[hero].powers[power];
+            powerList.appendChild(item);
         }
 
-        td.appendChild(list);
-        powersRow.appendChild(td);
-    }
-    table.appendChild(powersRow);
+        article.appendChild(name);
+        article.appendChild(identity);
+        article.appendChild(age);
+        article.appendChild(powers);
+        article.appendChild(powerList);
 
-    section.appendChild(table);
+        section.appendChild(article);
+    }
 }
