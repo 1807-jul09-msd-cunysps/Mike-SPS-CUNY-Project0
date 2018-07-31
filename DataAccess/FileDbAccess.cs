@@ -11,7 +11,7 @@ namespace DataAccess
     public class FileDbAccess
     {
         public static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();     //logger.Info(e.Message);
-        private const string contactFile = "contacts.dat";
+        private const string contactFile = "contacts.json";
 
         // Read contacts file and return as List<PersonModel>
         public static List<PersonModel> GetContacts(string fileName = contactFile)

@@ -63,6 +63,7 @@ namespace DataAccess
                 phone.PersonId = Pid;
                 addr.PersonId = Pid;
 
+                logger.Info($"Added new person to DB: {person.Print()}");
                 return true;
             }
             catch(Exception e)
@@ -116,6 +117,7 @@ namespace DataAccess
                 // Update SQL DB
                 SqlDbAccess.Update(person);
 
+                logger.Info($"Edited person in DB: {person.Print()}");
                 return true;
             }
             catch (Exception e)
@@ -148,6 +150,8 @@ namespace DataAccess
 
                 // Update SQL DB
                 SqlDbAccess.Delete(person.Id);
+
+                logger.Info($"Deleted person from DB: {person.Print()}");
 
                 return true;
             }

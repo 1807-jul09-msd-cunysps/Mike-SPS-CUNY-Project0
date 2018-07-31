@@ -26,7 +26,7 @@ namespace DataAccess
                                           "lastname VARCHAR(35));",
                     "CREATE TABLE address(" +
                                           "id INT PRIMARY KEY IDENTITY(1,1), " +
-                                          "personID INT FOREIGN KEY REFERENCES person(id)," +
+                                          "FK_Person INT FOREIGN KEY REFERENCES person(id)," +
                                           "housenum VARCHAR(25), " +
                                           "street VARCHAR(25), " +
                                           "city VARCHAR(25), " +
@@ -35,7 +35,7 @@ namespace DataAccess
                                           "zipcode VARCHAR(5));",
                     "CREATE TABLE phone(" +
                                           "id INT PRIMARY KEY IDENTITY(1,1), " +
-                                          "personID INT FOREIGN KEY REFERENCES person(id)," +
+                                          "FK_Person INT FOREIGN KEY REFERENCES person(id)," +
                                           "country VARCHAR(25), " +
                                           "areacode VARCHAR(3)," +
                                           "number VARCHAR(7)," +
@@ -174,7 +174,7 @@ namespace DataAccess
                                           $"areacode = '{newInfo.Phone.AreaCode}', " +
                                           $"number = '{newInfo.Phone.Number}', " +
                                           $"ext = '{newInfo.Phone.Ext}' " +
-                                          $"WHERE personid = {newInfo.Id};";
+                                          $"WHERE FK_Person = {newInfo.Id};";
                     command.ExecuteNonQuery();
                     Console.WriteLine($"DataAccess.Update: Before addr");
                     // UPDATE for address
@@ -185,7 +185,7 @@ namespace DataAccess
                                           $"state = '{newInfo.Address.State}', " +
                                           $"country = '{newInfo.Address.Country}', " +
                                           $"zipcode = '{newInfo.Address.Zipcode}' " +
-                                          $"WHERE personid = {newInfo.Id};";
+                                          $"WHERE FK_Person = {newInfo.Id};";
                     command.ExecuteNonQuery();
                     Console.WriteLine($"DataAccess.Update: Before commit");
                     // Commit transaction
@@ -223,12 +223,12 @@ namespace DataAccess
 
                     // DELETE for phone
                     command.CommandText = $"DELETE FROM phone " +
-                                          $"WHERE phone.personid = {id};";
+                                          $"WHERE phone.FK_Person = {id};";
                     command.ExecuteNonQuery();
 
                     // DELETE for address
                     command.CommandText = $"DELETE FROM address " +
-                                          $"WHERE address.personid = {id};";
+                                          $"WHERE address.FK_Person = {id};";
                     command.ExecuteNonQuery();
 
                     // DELETE for person
@@ -269,8 +269,8 @@ namespace DataAccess
                 {
                     // Get by person.id           
                     command.CommandText = $"SELECT * FROM person " +
-                                          $"LEFT JOIN phone ON person.ID = phone.personID " +
-                                          $"LEFT JOIN address ON person.ID = address.personID " +
+                                          $"LEFT JOIN phone ON person.ID = phone.FK_Person " +
+                                          $"LEFT JOIN address ON person.ID = address.FK_Person " +
                                           $"WHERE LOWER(person.id) = {id}" +
                                           $";";
                     SqlDataReader reader = command.ExecuteReader();
@@ -335,8 +335,8 @@ namespace DataAccess
                 {
                     // Search firstname, lastname, zipcode, city, and phone number for query            
                     command.CommandText = $"SELECT * FROM person " +
-                                          $"LEFT JOIN phone ON person.ID = phone.personID " +
-                                          $"LEFT JOIN address ON person.ID = address.personID " +
+                                          $"LEFT JOIN phone ON person.ID = phone.FK_Person " +
+                                          $"LEFT JOIN address ON person.ID = address.FK_Person " +
                                           $"WHERE LOWER(person.firstname) = '{query}' " +
                                           $"OR LOWER(person.lastname) = '{query}' " +
                                           $"OR LOWER(address.zipcode) = '{query}' " +
