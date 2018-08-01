@@ -1,17 +1,51 @@
-﻿// https://www.zipcodeapi.com/API API key
-const zipcodeApiKey = "js-8CmO1wuQQBeCe7z5bIChCXAOTbwaJm8reizkWEG8Gmg5IhAcqOfUQQoYxHq5lAFm";
+﻿/*
+ * On Page Load
+ */
+$(document).ready(
+    function () {
+        init();
+    }
+);
 
-// Init listeners after page load
-window.onload = function () {
-    init();
-};
-
-// Initialize variables
+/*
+ * Add Listeners
+ */
 function init() {
+    // Validate first name
+    $("#inputFirstName").blur(validateName);
+    // Validate last name
+    $("#inputLastName").blur(validateName);
+    // Validate age
+    $("#inputAge").blur(validateAge);
+    // Validate gender
+    $("#inputGender").change(validateGender);
+    // Validate Addr Line 1
+    $("#inputAddr1").blur(CannotBeEmpty);
+    // Validate Zipcode
+    $("#inputZipcode").blur(validateZipcode);
+    // Validate City
+    $("#inputCity").blur(CannotBeEmpty);
+    // Validate State
+    $("#inputState").blur(CannotBeEmpty);
+    // Validate Country
+    //$("#inputCountry").change(CannotBeEmpty);
+    // Validate Phone
+    $("#inputPhoneNum").blur(validatePhone);
+    // Validate Email
+    $("#inputEmail").blur(validateEmail);
+    // Populate Countries
+    // On submit
+    $("#inputForm").submit(formSubmitted);
     // Add listener to zipcodes
     document.querySelector("#inputZipcode").addEventListener("blur", zipcodePopCityState);
     document.querySelector("#inputPrimZipcode").addEventListener("blur", zipcodePopPrimCityState);
 }
+
+/*
+ * Zipcode API
+ */
+// https://www.zipcodeapi.com/API API key
+const zipcodeApiKey = "js-8CmO1wuQQBeCe7z5bIChCXAOTbwaJm8reizkWEG8Gmg5IhAcqOfUQQoYxHq5lAFm";
 
 // Generic AJAX for GET requests
 function ajaxGet(url, cbFunction) {                 
@@ -55,6 +89,9 @@ function zipcodePopPrimCityState(e) {
     ajaxGet(url, cbFunc);
 }
 
+/*
+ * Primary Address Div
+ */
 // Function for showing Primary Address div
 function togglePrimAddr() {
     var selector = document.querySelector("#isPrimAddr").value;
@@ -67,7 +104,9 @@ function togglePrimAddr() {
     }
 }
 
-/* Form Validations */
+/*
+ * Form Validations
+ */
 function validateName(e) {
     // Remove previous span if exists
     $("#" + this.id + " + span").remove();
@@ -143,54 +182,6 @@ function validateEmail(e) {
     }
 }
 
-$(document).ready(
-    function () {
-        // Validate first name
-        $("#inputFirstName").blur(validateName);
-        // Validate last name
-        $("#inputLastName").blur(validateName);
-        // Validate age
-        $("#inputAge").blur(validateAge);
-        // Validate gender
-        $("#inputGender").change(validateGender);
-        // Validate Addr Line 1
-        $("#inputAddr1").blur(CannotBeEmpty);
-        // Validate Zipcode
-        $("#inputZipcode").blur(validateZipcode);
-        // Validate City
-        $("#inputCity").blur(CannotBeEmpty);
-        // Validate State
-        $("#inputState").blur(CannotBeEmpty);
-        // Validate Country
-        //$("#inputCountry").change(CannotBeEmpty);
-        // Validate Phone
-        $("#inputPhoneNum").blur(validatePhone);
-        // Validate Email
-        $("#inputEmail").blur(validateEmail);
-        // Populate Countries
-
-        // On submit
-        $("#inputForm").submit(formSubmitted);
-    }
-);
-
-/* On-Submit Tasks */
-
-function formSubmitted(e) {
-    // Prevent page refresh
-    e.preventDefault();
-    // Validate all fields
-    if (!validateAll()) {
-        console.log("Not valid!");
-        return;
-    }
-    console.log("Valid!");
-    // Create new person
-    var newPerson = buildPersonObj();
-    //
-    console.log(newPerson);
-}
-
 function validateAll() {
 
     // Wipe all errors
@@ -201,11 +192,11 @@ function validateAll() {
     // Firstname
     if (!(/^([a-zA-Z]{1,})$/.test($("#inputFirstName").val()))) {
         $("#inputFirstName").after('<span class="error">Cannot be empty.<br/>Can only contain letters.</span>');
-    }  
+    }
     // Lastname
     if (!(/^([a-zA-Z]{1,})$/.test($("#inputLastName").val()))) {
         $("#inputLastName").after('<span class="error">Cannot be empty.<br/>Can only contain letters.</span>');
-    } 
+    }
     // Age
     if (!(/^([0-9]{1,})$/.test($("#inputAge").val()))) {
         $("#inputAge").after('<span class="error">Only numbers. <br/> Cannot be empty.</span>');
@@ -246,21 +237,65 @@ function validateAll() {
     return true;
 }
 
+/*
+ * OnSubmit override and support functions
+ */
+function formSubmitted(e) {
+    // Prevent page refresh
+    e.preventDefault();
+    // Validate all fields
+    if (!validateAll()) {
+        //console.log("Not valid!");
+        return;
+    }
+    //console.log("Valid!");
+    // Create new person
+    var newPerson = buildPersonObj();
+    //
+    console.log(newPerson);
+
+    // Post new person with AJAX
+    sendPost(newPerson);
+}
+
+function sendPost(newPerson) {
+    var url = "http://localhost:56494/api/person";
+    var person = newPerson;
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: person,
+        dataType: "JSON",
+        success: function (response) {
+            if (response != null) {
+                para.text(JSON.stringify(response));
+            }
+            else {
+                alert("error");
+            }
+        }
+    })
+}
+
 function buildPersonObj() {
     
     var newPerson = {
         "Firstname": document.querySelector("#inputFirstName").value,
         "Lastname": document.querySelector("#inputLastName").value,
-        "Age": document.querySelector("#inputAge").value,
-        "Gender": document.querySelector("#inputGender").value,
-        "AddressLine1": document.querySelector("#inputAddr1").value,
-        "AddressLine2": document.querySelector("#inputAddr2").value,
-        "City": document.querySelector("#inputCity").value,
-        "State": document.querySelector("#inputState").value,
-        "Country": document.querySelector("#inputCountry").value,
-        "Zipcode": document.querySelector("#inputZipcode").value,
-        "Number": document.querySelector("#inputPhoneNum").value,
-        "Ext": document.querySelector("#inputPhoneExt").value,
+        //"Age": document.querySelector("#inputAge").value,
+        //"Gender": document.querySelector("#inputGender").value,
+        "Address": {
+            "AddressLine1": document.querySelector("#inputAddr1").value,
+            "AddressLine2": document.querySelector("#inputAddr2").value,
+            "City": document.querySelector("#inputCity").value,
+            //"State": document.querySelector("#inputState").value,
+            //"Country": document.querySelector("#inputCountry").value,
+            "Zipcode": document.querySelector("#inputZipcode").value
+        },
+        "Phone": {
+            "Number": document.querySelector("#inputPhoneNum").value,
+            "Ext": document.querySelector("#inputPhoneExt").value
+        },
         "Email": document.querySelector("#inputEmail").value
     };
     return newPerson;
