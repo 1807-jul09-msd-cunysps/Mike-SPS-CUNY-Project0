@@ -68,7 +68,6 @@ function togglePrimAddr() {
 }
 
 /* Form Validations */
-
 function validateName(e) {
     // Remove previous span if exists
     $("#" + this.id + " + span").remove();
@@ -126,6 +125,15 @@ function CannotBeEmpty(e) {
     }
 }
 
+function validatePhone(e) {
+    // Remove previous span if exists
+    $("#" + this.id + " + span").remove();
+    // Validate
+    if (!(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test($(this).val()))) {
+        $(this).after('<span class="error">Please use a 10 digit phone number.</span>');
+    }
+}
+
 function validateEmail(e) {
     // Remove previous span if exists
     $("#" + this.id + "+ span").remove();
@@ -155,8 +163,11 @@ $(document).ready(
         $("#inputState").blur(CannotBeEmpty);
         // Validate Country
         //$("#inputCountry").change(CannotBeEmpty);
+        // Validate Phone
+        $("#inputPhoneNum").blur(validatePhone);
         // Validate Email
         $("#inputEmail").blur(validateEmail);
+        // Populate Countries
 
         // On submit
         $("#inputForm").submit(formSubmitted);
@@ -224,9 +235,8 @@ function validateAll() {
     }
     // Country
     // Phone Num
-
     // Email
-    if (!(/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/.test($("inputEmail").val()))) {
+    if (!(/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/.test($("#inputEmail").val()))) {
         $("#inputEmail").after('<span class="error">Please enter a valid email address.</span>');
     }
 
@@ -247,7 +257,7 @@ function buildPersonObj() {
         "AddressLine2": document.querySelector("#inputAddr2").value,
         "City": document.querySelector("#inputCity").value,
         "State": document.querySelector("#inputState").value,
-        "Country": document.querySelector("#inputCountry").innerText,
+        "Country": document.querySelector("#inputCountry").value,
         "Zipcode": document.querySelector("#inputZipcode").value,
         "Number": document.querySelector("#inputPhoneNum").value,
         "Ext": document.querySelector("#inputPhoneExt").value,
