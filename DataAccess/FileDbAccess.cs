@@ -55,7 +55,7 @@ namespace DataAccess
             string json = "";
             try
             {
-                json = JsonConvert.SerializeObject(contacts);
+                json = JsonConvert.SerializeObject(contacts, Formatting.Indented);
             }
             catch (Exception e)
             {

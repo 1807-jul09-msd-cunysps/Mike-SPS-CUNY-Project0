@@ -158,7 +158,7 @@ namespace DataAccess
                 SqlTransaction transaction = connection.BeginTransaction(); // Create transaction
                 SqlCommand command = connection.CreateCommand();            // Create command
                 command.Transaction = transaction;                          // Assign transaction to command
-                Console.WriteLine($"DataAccess.Update: Before try");
+
                 try
                 {
                     // UPDATE for person
@@ -167,7 +167,7 @@ namespace DataAccess
                                           $"lastname = '{newInfo.Lastname}' " +
                                           $"WHERE id = {newInfo.Id};";
                     command.ExecuteNonQuery();
-                    Console.WriteLine($"DataAccess.Update: Before phone");
+                    
                     // UPDATE for phone
                     command.CommandText = $"UPDATE phone " +
                                           $"SET country = '{newInfo.Phone.CountryCode}', " +
@@ -176,7 +176,7 @@ namespace DataAccess
                                           $"ext = '{newInfo.Phone.Ext}' " +
                                           $"WHERE FK_Person = {newInfo.Id};";
                     command.ExecuteNonQuery();
-                    Console.WriteLine($"DataAccess.Update: Before addr");
+                    
                     // UPDATE for address
                     command.CommandText = $"UPDATE address " +
                                           $"SET housenum = '{newInfo.Address.HouseNum}', " +
@@ -187,10 +187,10 @@ namespace DataAccess
                                           $"zipcode = '{newInfo.Address.Zipcode}' " +
                                           $"WHERE FK_Person = {newInfo.Id};";
                     command.ExecuteNonQuery();
-                    Console.WriteLine($"DataAccess.Update: Before commit");
+                    
                     // Commit transaction
                     transaction.Commit();
-                    Console.WriteLine($"DataAccess.Update: after commit");
+                 
                 }
                 catch (Exception ex)
                 {

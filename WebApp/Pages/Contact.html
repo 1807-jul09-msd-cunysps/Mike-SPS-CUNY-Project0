@@ -181,16 +181,19 @@
                 <h4>Contact Info</h4> <hr />
                 <!-- Row for: Phone, Extension, and Email -->
                 <div class="row custom-new-row-group">
-                    <div class="placeholder col-sm-1"></div>
-                    <label for="inputPhone" class="col-sm-2 col-form-label text-right">Phone Number</label>
-                    <div class="col-sm-2">
+                    <div class="placeholder col-sm-2"></div>
+                    <label for="inputPhone" class="col-sm-3 col-form-label text-right">Phone Number</label>
+                    <div class="col-sm-3">
                         <input type="text" class="input-medium bfh-phone form-control" data-format="(ddd) ddd-dddd" id="inputPhoneNum">
                         <script>$("#inputPhoneNum").intlTelInput();</script>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         <input type="text" class="form-control text-left" id="inputPhoneExt" placeholder="Ext.">
                     </div>
-                    <label for="inputEmail" class="col-sm-2 col-form-label text-right">E-Mail</label>
+                </div>
+                <div class="row custom-new-row-group">
+                    <div class="placeholder col-sm-2"></div>
+                    <label for="inputEmail" class="col-sm-3 col-form-label text-right">E-Mail</label>
                     <div class="col-sm-3">
                         <input type="email" class="form-control text-left" id="inputEmail" placeholder="E-Mail Address">
                     </div>
