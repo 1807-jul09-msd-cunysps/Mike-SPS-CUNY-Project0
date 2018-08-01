@@ -1,4 +1,5 @@
-﻿SELECT CONCAT(p.firstname, ' ', p.lastname) AS Name,
+﻿SELECT p.Id,
+	   CONCAT(p.firstname, ' ', p.lastname) AS Name,
 	   CONCAT(addr.housenum, ' ', addr.street, ' ', addr.zipcode) AS Address,
 	   CONCAT('(', ph.Areacode, ') ', ph.number, ' ', ph.ext) AS Phone
 FROM person AS p

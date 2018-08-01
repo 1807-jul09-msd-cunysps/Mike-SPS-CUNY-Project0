@@ -393,7 +393,74 @@ namespace DataAccess
             return results;
         }
 
-        public static void WipeItAll()
+        public static List<PersonModel> GetAll()
+        {
+            // List to return query results
+            List<PersonModel> results = new List<PersonModel>();
+            // SQL interaction
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();                                          // Open connection
+                SqlCommand command = connection.CreateCommand();            // Create command
+
+                try
+                {
+                    // Search firstname, lastname, zipcode, city, and phone number for query            
+                    command.CommandText = $"SELECT * FROM person " +
+                                          $"LEFT JOIN phone ON person.ID = phone.FK_Person " +
+                                          $"LEFT JOIN address ON person.ID = address.FK_Person " +
+                                          $";";
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        PersonModel p = new PersonModel()
+                        {
+                            Id = Int32.Parse(reader[0].ToString()),
+                            Firstname = reader[1].ToString(),
+                            Lastname = reader[2].ToString(),
+                            Phone = new PhoneModel
+                            {
+                                Id = Int32.Parse(reader[3].ToString()),
+                                PersonId = Int32.Parse(reader[4].ToString()),
+                                CountryCode = Country.Australia,
+                                AreaCode = reader[6].ToString(),
+                                Number = reader[7].ToString(),
+                                Ext = reader[8].ToString()
+                            },
+                            Address = new AddressModel
+                            {
+                                Id = Int32.Parse(reader[9].ToString()),
+                                PersonId = Int32.Parse(reader[10].ToString()),
+                                HouseNum = reader[11].ToString(),
+                                Street = reader[12].ToString(),
+                                City = reader[13].ToString(),
+                                State = State.FL,
+                                Country = Country.Australia,
+                                Zipcode = reader[16].ToString()
+                            }
+                        };
+                        results.Add(p);
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    try
+                    {
+                        // Roll back if exception
+
+                    }
+                    catch (Exception exRollback)
+                    {
+                        Console.WriteLine(exRollback.Message);
+                    }
+                }
+            }
+            return results;
+        }
+
+        private static void WipeItAll()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
