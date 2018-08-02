@@ -259,7 +259,7 @@ function formSubmitted(e) {
 }
 
 function sendPost(newPerson) {
-    var url = "http://localhost:56494/api/person";
+    var url = "http://mc-proj-0.azurewebsites.net/api/person";
     var person = newPerson;
     $.ajax({
         type: "POST",
@@ -282,21 +282,22 @@ function buildPersonObj() {
     var newPerson = {
         "Firstname": document.querySelector("#inputFirstName").value,
         "Lastname": document.querySelector("#inputLastName").value,
-        //"Age": document.querySelector("#inputAge").value,
-        //"Gender": document.querySelector("#inputGender").value,
+        "Age": document.querySelector("#inputAge").value,
+        "Gender": document.querySelector("#inputGender").value,
         "Address": {
-            "AddressLine1": document.querySelector("#inputAddr1").value,
-            "AddressLine2": document.querySelector("#inputAddr2").value,
+            "AddrLine1": document.querySelector("#inputAddr1").value,
+            "AddrLine2": document.querySelector("#inputAddr2").value,
             "City": document.querySelector("#inputCity").value,
-            //"State": document.querySelector("#inputState").value,
-            //"Country": document.querySelector("#inputCountry").value,
+            "State": document.querySelector("#inputState").value,
+            "Country": document.querySelector("#inputCountry").value,
             "Zipcode": document.querySelector("#inputZipcode").value
         },
-        "Phone": {
+        "Contact": {
+            "Country": document.querySelector("#inputCountry").value,
             "Number": document.querySelector("#inputPhoneNum").value,
-            "Ext": document.querySelector("#inputPhoneExt").value
+            "Ext": document.querySelector("#inputPhoneExt").value,
+            "Email": document.querySelector("#inputEmail").value
         },
-        "Email": document.querySelector("#inputEmail").value
     };
     return newPerson;
 }

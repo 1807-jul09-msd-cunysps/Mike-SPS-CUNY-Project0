@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Models
+namespace Models.Person
 {
     [DataContract]
     public class PersonModel
@@ -12,19 +12,23 @@ namespace Models
         [DataMember]
         public string Lastname { get; set; }
         [DataMember]
+        public int Age { get; set; }
+        [DataMember]
+        public string Gender { get; set; }
+        [DataMember]
         public AddressModel Address { get; set; }
         [DataMember]
-        public PhoneModel Phone { get; set; }
+        public ContactInfoModel ContactInfo { get; set; }
 
         public PersonModel()
         {
             Address = new AddressModel();
-            Phone = new PhoneModel();
+            ContactInfo = new ContactInfoModel();
         }
 
         public string Print()
         {
-            return $"\n{Firstname} {Lastname}\n{Address.Print()}\n{Phone.Print()}";
+            return $"\n{Firstname} {Lastname}\n{Address.Print()}\n{ContactInfo.Print()}";
         }
     }
 }

@@ -20,13 +20,13 @@ namespace WebAPI.Controllers
         [HttpGet]
         public JsonResult<IEnumerable<PersonModel>> Get()
         {
-            return Json<IEnumerable<PersonModel>>(SqlDbAccess.GetAll());
+            return Json<IEnumerable<PersonModel>>(MessageSqlDbAccess.GetAll());
         }
 
         [HttpGet]
         public JsonResult<PersonModel> Get(int Id)
         {
-            return Json<PersonModel>(SqlDbAccess.GetPersonById(Id));
+            return Json<PersonModel>(MessageSqlDbAccess.GetPersonById(Id));
         }
 
         [HttpPost]
@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
             {
                 try
                 {
-                    SqlDbAccess.Add(p);
+                    MessageSqlDbAccess.Add(p);
                     logger.Info($"PersonController.Post successfully added {p.Print()}");
                     return Ok();
                 }
@@ -60,7 +60,7 @@ namespace WebAPI.Controllers
             {
                 try
                 {
-                    SqlDbAccess.Update(p);
+                    MessageSqlDbAccess.Update(p);
                     logger.Info($"PersonController.Put successfully edited {p.Print()}");
                     return Ok();
                 }
@@ -82,7 +82,7 @@ namespace WebAPI.Controllers
         {
             try
             {
-                SqlDbAccess.Delete(Id);
+                MessageSqlDbAccess.Delete(Id);
                 logger.Info($"PersonController.Delete successfully deleted pid {Id}");
                 return Ok();
             }

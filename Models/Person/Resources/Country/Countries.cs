@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Data.SqlClient;
 
-namespace Models.Resources.Country
+namespace Models.Person.Resources.Country
 {
     public static class Countries
     {
